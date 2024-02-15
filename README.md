@@ -58,10 +58,12 @@ Inside of your Astro project, you'll see the following folders and files:
 
 ---
 
-## Made by
+## Authors
 
-[Juan Carlos Acosta Perabá](htts://github.com/juancarlosacostaperaba)
-[Kilian Armas Pérez](https://github.com/Kilamper)
-[Silvia González Torres](https://github.com/SilviaGonz)
-[Cristian Marrero Vega](https://github.com/XxMARRExX)
-[Nuhacet Travieso del Rosario](https://github.com/nuhacet66)
+| Name | GitHub |
+| ---- | ------ |
+| Juan Carlos Acosta Perabá | [juancarlosacostaperaba](htts://github.com/juancarlosacostaperaba) |
+| Kilian Armas Pérez | [Kilamper](https://github.com/Kilamper) |
+| Silvia González Torres | [SilviaGonz](https://github.com/SilviaGonz) |
+| Cristian Marrero Vega | [XxMARRExX](https://github.com/XxMARRExX) |
+| Nuhacet Travieso del Rosario | [nuhacet66](https://github.com/nuhacet66) |
