@@ -1,6 +1,6 @@
 # Commands
 
-All commands are run from a terminal at the root of the project:
+All commands are run from a terminal at the root of the project.
 
 ## Astro
 
@@ -39,8 +39,8 @@ All commands are run from a terminal at the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `pnpm install`  | Instalar dependencias del proyecto |
-| `pnpm run dev` | Lanzar entorno de desarrollo |
-| `pnpm version major` | Ascender la version major +1 |
-| `pnpm version minor` | Ascender la version minor (feature/release) +1 |
-| `pnpm version patch` | Ascender la version patch (fix) +1 |
+| `pnpm install`  | Install project dependencies |
+| `pnpm run dev` | Launch development environment |
+| `pnpm version major` | Upgrade major version +1 |
+| `pnpm version minor` | Promote minor version (feature/release) +1 |
+| `pnpm version patch` | Upgrade patch version (fix) +1 |
