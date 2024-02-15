@@ -62,7 +62,7 @@ Inside of your Astro project, you'll see the following folders and files:
 
 | Name | GitHub |
 | ---- | ------ |
-| Juan Carlos Acosta Perabá | [juancarlosacostaperaba](htts://github.com/juancarlosacostaperaba) |
+| Juan Carlos Acosta Perabá | [juancarlosacostaperaba](https://github.com/JuanCarlosAcostaPeraba) |
 | Kilian Armas Pérez | [Kilamper](https://github.com/Kilamper) |
 | Silvia González Torres | [SilviaGonz](https://github.com/SilviaGonz) |
 | Cristian Marrero Vega | [XxMARRExX](https://github.com/XxMARRExX) |
