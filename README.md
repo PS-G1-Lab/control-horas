@@ -56,6 +56,10 @@ Inside of your Astro project, you'll see the following folders and files:
 └── [Rest of the files]
 ```
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
 ---
 
 ## Authors
