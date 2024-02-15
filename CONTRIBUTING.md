@@ -6,4 +6,4 @@
 4. Make the changes
 5. Commit with a descriptive message
 6. Push to your repository
-7. Create a pull request to the `develop` branch of the [original repository](https://github.com/PS-G1-Lab/control-horas). Include a little description of the feature you are adding or the bug you are fixing and add images to see the changes easily.
+7. Create a pull request to the `develop` branch of the [original repository](https://github.com/PS-G1-Lab/control-horas). Include a little description of the feature you are adding or the bug you are fixing and add images to see the changes easily
