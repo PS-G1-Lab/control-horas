@@ -10,7 +10,7 @@ spaces_around_operators = true
 spaces_around_brackets = true
 
 [*.{js,astro,svelte,html,css,json}]
-indent_style = tab
+indent_style = space
 indent_size = 2
 
 [*.{py,md}]
