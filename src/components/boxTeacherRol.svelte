@@ -1,9 +1,25 @@
-<div class="boxTeacherRol"></div>
+<button class="buttonTeacherRol">Profesor</button>
 
 <style>
-  .boxTeacherRol {
-    width: 100px; /* Ancho del cuadrado */
-    height: 100px; /* Alto del cuadrado */
-    background-color: yellow; /* Color de fondo del cuadrado */
+  .buttonTeacherRol {
+    border-color: #E6622E;
+    border-style: solid;
+
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+
+    font-size: 2.5em;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 550;
+    color: #242426;
+    
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+  }
+
+  .buttonTeacherRol:focus{
+    border-color: #242426;
+    opacity: 70%;
   }
 </style>
