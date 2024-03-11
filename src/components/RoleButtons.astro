@@ -1,0 +1,33 @@
+---
+
+---
+
+<div class="flex gap-8 justify-center text-4xl mb-8">
+	<button
+		type="button"
+		class="py-2 px-3 border-b-2 border-l-2 border-primary hover:opacity-100 hover:border-primary"
+		role="button"
+		data-role="student">Estudiante</button
+	>
+	<button
+		type="button"
+		class="py-2 px-3 border-b-2 border-l-2 border-black opacity-50 hover:opacity-100 hover:border-primary"
+		role="button"
+		data-role="professor">Profesor</button
+	>
+</div>
+
+<script>
+	const roleButtons = document.querySelectorAll('[role="button"]')
+
+	roleButtons.forEach((button) => {
+		button.addEventListener('click', () => {
+			roleButtons.forEach((button) => {
+				button.classList.remove('border-primary', 'opacity-100')
+				button.classList.add('border-black', 'opacity-50')
+			})
+			button.classList.remove('border-black', 'opacity-50')
+			button.classList.add('border-primary', 'opacity-100')
+		})
+	})
+</script>
