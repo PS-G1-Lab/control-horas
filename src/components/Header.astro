@@ -11,11 +11,11 @@ import Logo from '@/icons/Logo.astro'
 		<Logo class="object-contain" />
 	</a>
 	<div class="flex items-center lg:order-2 gap-4">
-		<a href="#" class="px-4 py-2 hover:text-primary transition ease-in-out"
+		<a href="/login" class="px-4 py-2 hover:text-primary transition ease-in-out"
 			>Iniciar Sesión</a
 		>
 		<a
-			href="#"
+			href="/register"
 			class="px-4 py-2 border-2 rounded-lg border-primary hover:bg-primary hover:text-white transition ease-in-out"
 			>Registrarse</a
 		>
@@ -24,8 +24,8 @@ import Logo from '@/icons/Logo.astro'
 			type="button"
 			class="inline-flex items-center p-2 ml-1 text-sm rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
 			aria-controls="mobile-menu"
-			aria-expanded="false">
-			<span class="sr-only">Abrir menú</span>
+			aria-expanded="false"
+			aria-label="Botón para desplegar menú en dispositivos móviles">
 			<svg
 				class="w-6 h-6"
 				fill="currentColor"
@@ -55,21 +55,21 @@ import Logo from '@/icons/Logo.astro'
 			class="flex mt-4 justify-center font-medium flex-row lg:space-x-8 lg:mt-0">
 			<li>
 				<a
-					href="#"
+					href="/learn"
 					class="px-3 py-2 rounded hover:bg-neutral-100 transition ease-in-out mx-3 lg:mx-0"
 					>Aprender</a
 				>
 			</li>
 			<li>
 				<a
-					href="#"
+					href="/teach"
 					class="px-3 py-2 rounded hover:bg-neutral-100 transition ease-in-out mx-3 lg:mx-0"
 					>Enseñar</a
 				>
 			</li>
 			<li>
 				<a
-					href="#"
+					href="#opiniones"
 					class="px-3 py-2 rounded hover:bg-neutral-100 transition ease-in-out mx-3 lg:mx-0"
 					>Opiniones</a
 				>
