@@ -1,0 +1,56 @@
+---
+name: "Menu";
+import Logo from "@/icons/Logo.astro";
+---
+
+<nav>
+  <Logo />
+
+  <div class="user">
+    <svg
+      version="1.0"
+      xmlns="http://www.w3.org/2000/svg"
+      width="630.000000pt"
+      height="82.000000pt"
+      viewBox="0 0 630.000000 82.000000"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+  </div>
+</nav>
+
+<style>
+  /* Estilos CSS para el menú */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+
+  .logo {
+    /* Estilos para el logo */
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+  }
+
+  .user span {
+    margin-right: 5px;
+  }
+
+  .feather {
+    width: 20px;
+    height: 20px;
+    stroke: #000;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+</style>
