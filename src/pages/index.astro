@@ -2,8 +2,8 @@
 import Layout from '@/layouts/Layout.astro'
 
 import Hero from '@/sections/Hero.astro'
-
 import Header from '@/components/Header.astro'
+import Wave from '@/components/Wave.astro'
 ---
 
 <Layout
@@ -12,5 +12,6 @@ import Header from '@/components/Header.astro'
 	<Header />
 	<main class="mx-auto max-w-screen-xl py-2.5">
 		<Hero />
+		<Wave class="absolute -z-10" />
 	</main>
 </Layout>
