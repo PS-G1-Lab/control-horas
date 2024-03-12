@@ -30,6 +30,10 @@
       class="text-white bg-primary py-2 px-4 rounded-md flex items-center justify-center gap-3"
       >Comenzar <RightArrow /></a
     >
-    <a href="/faqs"><QuestionMark /></a>
+    <a
+      href="/faqs"
+      aria-label="Enlace que te lleva a la página de preguntas frecuentes"
+      ><QuestionMark /></a
+    >
   </div>
 </div>
