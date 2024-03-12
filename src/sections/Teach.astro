@@ -1,38 +1,44 @@
 ---
-import Hat from "@/icons/Hat.astro";
-import Ideal from "@/icons/Ideal.astro";
-import Rocket from "@/icons/Rocket.astro";
+import Hat from '@/icons/Hat.astro'
+import Ideal from '@/icons/Ideal.astro'
+import Rocket from '@/icons/Rocket.astro'
 ---
 
-<teach class="flex flex-col justify-center text-black py-12">
-  <h2 class="mb-12 text-center text-3xl lg:text-5xl font-semibold">
-    Empieza a enseñar
-  </h2>
-  <div class="flex flex-wrap justify-around items-start">
-    <div class="flex flex-col w-72 mb-8">
-      <Hat />
-      <a class="mb-2 text-left text-xl font-bold"
-        >Explora y contacta gratis con los profesores</a
-      >
-      <a class="text-left text-lg"
-        >Tienes en tus manos el mayor listado de profesores de España.</a
-      >
-    </div>
-    <div class="flex flex-col w-72 mb-8">
-      <Ideal />
-      <a class="mb-2 text-left text-xl font-bold"
-        >Elige al profesor ideal desde tan solo 9€/h</a
-      >
-      <a class="text-left text-lg"
-        >Encuentra a tu profesor según tus necesidades.</a
-      >
-    </div>
-    <div class="flex flex-col w-72 mb-8">
-      <Rocket />
-      <a class="mb-2 text-left text-xl font-bold">Aprende a tu propio ritmo</a>
-      <a class="text-left text-lg"
-        >Con las clases particulares personalizadas.</a
-      >
-    </div>
-  </div>
-</teach>
+<section class="flex flex-col justify-center items-center my-20">
+	<h2 class="mb-20 text-3xl lg:text-5xl font-semibold">Empieza a enseñar</h2>
+	<div class="flex flex-col lg:flex-row items-center justify-between w-full">
+		<article class="flex flex-col w-72">
+			<header>
+				<Hat />
+				<h1 class="mb-2 text-left text-xl font-bold">
+					Explora y contacta gratis con los profesores
+				</h1>
+			</header>
+			<p class="text-left text-lg">
+				Tienes en tus manos el mayor listado de profesores de España.
+			</p>
+		</article>
+		<article class="flex flex-col w-72 my-7 lg:my-0">
+			<header>
+				<Ideal />
+				<h1 class="mb-2 text-left text-xl font-bold">
+					Elige al profesor ideal desde tan solo 9€/h
+				</h1>
+			</header>
+			<p class="text-left text-lg">
+				Encuentra a tu profesor según tus necesidades.
+			</p>
+		</article>
+		<article class="flex flex-col w-72">
+			<header>
+				<Rocket />
+				<h1 class="mb-2 text-left text-xl font-bold">
+					Aprende a tu propio ritmo
+				</h1>
+			</header>
+			<p class="text-left text-lg">
+				Con las clases particulares personalizadas.
+			</p>
+		</article>
+	</div>
+</section>
