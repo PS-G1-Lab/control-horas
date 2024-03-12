@@ -1,9 +1,9 @@
 ---
-import HeroInfo from '@/components/HeroInfo.astro'
+import HeroInfo from '@/components/HeroInfo.svelte'
 ---
 
 <section class="flex flex-row my-32">
-	<HeroInfo />
+	<HeroInfo client:idle />
 	<img
 		src="img/girl-in-meeting.svg"
 		alt="Dibujo de una mujer en una reunión online"
