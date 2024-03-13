@@ -1,7 +1,7 @@
 ---
-import Layout from '@/layouts/Layout.astro'
-import Card from '@/components/Card.astro'
-import Test from '@/components/Test.svelte'
+import Layout from "@/layouts/Layout.astro"
+import Card from "@/components/Card.astro"
+import Test from "@/components/Test.svelte"
 ---
 
 <Layout title="Welcome to Astro.">
@@ -14,7 +14,8 @@ import Test from '@/components/Test.svelte'
 			viewBox="0 0 495 623"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true">
+			aria-hidden="true"
+		>
 			<path
 				fill-rule="evenodd"
 				clip-rule="evenodd"
@@ -27,7 +28,8 @@ import Test from '@/components/Test.svelte'
 					y1="0"
 					x2="247.358"
 					y2="622.479"
-					gradientUnits="userSpaceOnUse">
+					gradientUnits="userSpaceOnUse"
+				>
 					<stop stop-opacity="0.9"></stop>
 					<stop offset="1" stop-opacity="0.2"></stop>
 				</linearGradient>
@@ -35,8 +37,7 @@ import Test from '@/components/Test.svelte'
 		</svg>
 		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
 		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br
-			/>
+			To get started, open the directory <code>src/pages</code> in your project.<br />
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
 		</p>
 		<ul role="list" class="link-card-grid">
@@ -100,10 +101,7 @@ import Test from '@/components/Test.svelte'
 	.instructions {
 		margin-bottom: 2rem;
 		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(
-			rgba(var(--accent-dark), 66%),
-			rgba(var(--accent-dark), 33%)
-		);
+		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
 		padding: 1.5rem;
 		border-radius: 8px;
 	}
