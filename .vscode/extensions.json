@@ -1,11 +1,12 @@
 {
-  "recommendations": [
-    "astro-build.astro-vscode",
-    "svelte.svelte-vscode",
-    "dbaeumer.vscode-eslint",
-    "usernamehw.errorlens",
-    "bradlc.vscode-tailwindcss",
-    "EditorConfig.EditorConfig"
-  ],
-  "unwantedRecommendations": []
+	"recommendations": [
+		"astro-build.astro-vscode",
+		"bradlc.vscode-tailwindcss",
+		"dbaeumer.vscode-eslint",
+		"EditorConfig.EditorConfig",
+		"esbenp.prettier-vscode",
+		"svelte.svelte-vscode",
+		"usernamehw.errorlens"
+	],
+	"unwantedRecommendations": []
 }
