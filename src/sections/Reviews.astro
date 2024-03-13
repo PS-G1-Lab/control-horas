@@ -1,0 +1,44 @@
+---
+import Star from "@/icons/Star.astro";
+---
+
+<section class="flex flex-col justify-center items-center my-20">
+  <h2 class="mb-20 text-3xl lg:text-5xl font-semibold">Tu voz cuenta</h2>
+  <div class="flex flex-row justify-center">
+    <img
+      src="img/girl-in-wheelchair.svg"
+      alt="Dibujo de una mujer en silla de ruedas"
+      class="hidden lg:h-[28rem] lg:block aspect-auto"
+    />
+    <div class="margin-auto ml-32">
+      <article class="border border-black rounded-lg px-8 py-8 mb-8 w-96">
+        <a class="font-medium mb-4">Padre de un estudiante de Física</a>
+        <p>
+          El profesor tiene mucho dominio, es paciente y adapta sus clases a las
+          necesidades de mi hijo. Las notas mejoraron mucho. Muy recomendable.
+        </p>
+        <div class="flex flex-row justify-end mt-4">
+          <Star />
+          <Star />
+          <Star />
+          <Star />
+          <Star />
+        </div>
+      </article>
+      <article class="border border-black rounded-lg px-8 py-8 mb-8 w-96">
+        <a class="font-medium mb-4">Estudiante de Python</a>
+        <p>
+          El profesor tiene un gran conocimiento de Python, gracias a él he
+          aprendido mucho. Lo recomiendo al 100%.
+        </p>
+        <div class="flex flex-row justify-end mt-4">
+          <Star />
+          <Star />
+          <Star />
+          <Star />
+          <Star />
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
