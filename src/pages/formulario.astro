@@ -1,86 +1,62 @@
 ---
-import Menu from "@/components/menu.astro";
-import Footer from "@/components/footer.astro";
-import Undraw from "@/icons/undraw.astro";
-import Wave from "@/components/Wave.astro";
+import Wave from "@/components/Wave.astro"
+import Footer from "@/components/footer.astro"
+import Menu from "@/components/menu.astro"
+import Undraw from "@/icons/undraw.astro"
 ---
 
 <html lang="es">
-  <head>
-    <title>Crear una nueva clase</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css"
-    />
-    <!--utf8 -->
-    <meta charset="UTF-8" />
-  </head>
-  <Menu />
-  <section class="flex justify-center">
-    <body class="font-sans">
-      <section class="mt-2">
-        <background-image class="w-full h-96">
-          <Undraw />
-        </background-image>
-        <form
-          action="/new_class"
-          method="post"
-          class="grid grid-cols-2 gap-4 w-97 h-80"
-        >
-          <label for="title" class="text-right mt-2">Titulo:</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            class="p-2 border border-gray-300 rounded"
-          />
-          <label for="start_time" class="text-right mt-2">Hora de inicio:</label
-          >
-          <input
-            type="time"
-            id="start_time"
-            name="start_time"
-            class="p-2 border border-gray-300 rounded"
-          />
-          <label for="description" class="text-right mt-2">Descripcion:</label>
-          <textarea
-            id="description"
-            name="description"
-            class="p-2 border border-gray-300 rounded resize-y"></textarea>
-          <label for="date" class="text-right mt-2">Fecha:</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            class="p-2 border border-gray-300 rounded"
-          />
-          <label for="end_time" class="text-right mt-2"
-            >Hora de finalizacion:</label
-          >
-          <input
-            type="time"
-            id="end_time"
-            name="end_time"
-            class="p-2 border border-gray-300 rounded"
-          />
-          <div class="flex justify-end">
-            <button
-              class="px-2 py-1 mt-2 mr-8 bg-orange-500 rounded-md text-white"
-            >
-              Crear
-            </button>
+	<head>
+		<title>Crear una nueva clase</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css"
+		/>
+		<!--utf8 -->
+		<meta charset="UTF-8" />
+	</head>
+	<Menu />
+	<section class="flex justify-center">
+		<body class="font-sans">
+			<section class="mt-2">
+				<background-image class="h-96 w-full">
+					<Undraw />
+				</background-image>
+				<form action="/new_class" method="post" class="w-97 grid h-80 grid-cols-2 gap-4">
+					<label for="title" class="mt-2 text-right">Titulo:</label>
+					<input type="text" id="title" name="title" class="rounded border border-gray-300 p-2" />
+					<label for="start_time" class="mt-2 text-right">Hora de inicio:</label>
+					<input
+						type="time"
+						id="start_time"
+						name="start_time"
+						class="rounded border border-gray-300 p-2"
+					/>
+					<label for="description" class="mt-2 text-right">Descripcion:</label>
+					<textarea
+						id="description"
+						name="description"
+						class="resize-y rounded border border-gray-300 p-2"></textarea>
+					<label for="date" class="mt-2 text-right">Fecha:</label>
+					<input type="date" id="date" name="date" class="rounded border border-gray-300 p-2" />
+					<label for="end_time" class="mt-2 text-right">Hora de finalizacion:</label>
+					<input
+						type="time"
+						id="end_time"
+						name="end_time"
+						class="rounded border border-gray-300 p-2"
+					/>
+					<div class="flex justify-end">
+						<button class="mr-8 mt-2 rounded-md bg-orange-500 px-2 py-1 text-white"> Crear </button>
 
-            <a
-              href="/classes"
-              class="px-2 py-1 mt-2 bg-white rounded-md text-black">Cancelar</a
-            >
-          </div>
-        </form>
-        <Wave />
-      </section>
-    </body>
-  </section>
-  <Footer />
+						<a href="/classes" class="mt-2 rounded-md bg-white px-2 py-1 text-black">Cancelar</a>
+					</div>
+				</form>
+				<Wave />
+			</section>
+		</body>
+	</section>
+	<Footer />
 
 
 </html>
