@@ -1,8 +1,6 @@
 ---
-import Wave from "@/components/Wave.astro"
 import Footer from "@/components/footer.astro"
 import Menu from "@/components/menu.astro"
-import Undraw from "@/icons/undraw.astro"
 ---
 
 <html lang="es">
@@ -16,47 +14,93 @@ import Undraw from "@/icons/undraw.astro"
 		<meta charset="UTF-8" />
 	</head>
 	<Menu />
-	<section class="flex justify-center">
-		<body class="font-sans">
-			<section class="mt-2">
-				<background-image class="h-96 w-full">
-					<Undraw />
-				</background-image>
-				<form action="/new_class" method="post" class="w-97 grid h-80 grid-cols-2 gap-4">
-					<label for="title" class="mt-2 text-right">Titulo:</label>
-					<input type="text" id="title" name="title" class="rounded border border-gray-300 p-2" />
-					<label for="start_time" class="mt-2 text-right">Hora de inicio:</label>
-					<input
-						type="time"
-						id="start_time"
-						name="start_time"
-						class="rounded border border-gray-300 p-2"
-					/>
-					<label for="description" class="mt-2 text-right">Descripcion:</label>
-					<textarea
-						id="description"
-						name="description"
-						class="resize-y rounded border border-gray-300 p-2"></textarea>
-					<label for="date" class="mt-2 text-right">Fecha:</label>
-					<input type="date" id="date" name="date" class="rounded border border-gray-300 p-2" />
-					<label for="end_time" class="mt-2 text-right">Hora de finalizacion:</label>
-					<input
-						type="time"
-						id="end_time"
-						name="end_time"
-						class="rounded border border-gray-300 p-2"
-					/>
-					<div class="flex justify-end">
-						<button class="mr-8 mt-2 rounded-md bg-orange-500 px-2 py-1 text-white"> Crear </button>
+	<!--Imagen de fondo de la pagina web -->
+	<div
+		class="w-500 h-200 h-screen bg-cover bg-center bg-no-repeat"
+		style="background-image: url('/public/fondo.svg'); background-size: 1350px 850px;"
+	>
+		<div class="w-400 h-100 flex h-full items-center justify-center">
+			<section class="flex justify-center">
+				<body class="font-sans">
+					<section class="flex justify-center">
+						<body class="font-sans">
+							<section class="mt-2">
+								<form action="/new_class" method="post" class="w-97 grid grid-cols-2 gap-4">
+									<div class="col-span-2 mb-4">
+										<label for="title" class="block">Titulo:</label>
+										<input
+											type="text"
+											id="title"
+											name="title"
+											class="w-full rounded border border-gray-300 p-2"
+										/>
+									</div>
+									<div>
+										<label for="date" class="block">Fecha:</label>
+										<input
+											type="date"
+											id="date"
+											name="date"
+											class="w-full rounded border border-gray-300 p-2"
+										/>
+									</div>
+									<div>
+										<label for="start_time" class="block">Hora de inicio:</label>
+										<input
+											type="time"
+											id="start_time"
+											name="start_time"
+											class="w-full rounded border border-gray-300 p-2"
+										/>
+									</div>
+									<div>
+										<label for="end_time" class="block">Hora de finalizacion:</label>
+										<input
+											type="time"
+											id="end_time"
+											name="end_time"
+											class="w-full rounded border border-gray-300 p-2"
+										/>
+									</div>
+									<div class="col-span-2">
+										<label for="description" class="block">Descripcion:</label>
+										<textarea
+											id="description"
+											name="description"
+											class="w-full resize-y rounded border border-gray-300 p-2"></textarea>
+									</div>
+									<div class="col-span-2 flex justify-end">
+										<button class="mr-8 mt-2 rounded-md bg-orange-500 px-2 py-1 text-white"
+											>Crear</button
+										>
+										<a href="/classes" class="mt-2 rounded-md bg-white px-2 py-1 text-black"
+											>Cancelar</a
+										>
+									</div>
+								</form>
 
-						<a href="/classes" class="mt-2 rounded-md bg-white px-2 py-1 text-black">Cancelar</a>
-					</div>
-				</form>
-				<Wave />
+								<div class="w-1200 h-610 relative bg-cover bg-center bg-no-repeat">
+									<div class="absolute inset-0 bg-black opacity-50"></div>
+									<!-- Capa oscura para hacer legible el formulario -->
+									<div class="absolute inset-0 flex items-center justify-center">
+										<form
+											action="/new_class"
+											method="post"
+											class="w-11/12 rounded-lg bg-white bg-opacity-90 p-6 md:w-3/4 lg:w-1/2"
+										>
+											<!-- Contenido del formulario -->
+										</form>
+									</div>
+								</div>
+							</section>
+						</body>
+					</section>
+				</body>
 			</section>
-		</body>
-	</section>
-	<Footer />
+		</div>
+
+		<Footer />
+	</div>
 
 
 </html>
