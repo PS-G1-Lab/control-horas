@@ -10,97 +10,88 @@ import Menu from "@/components/menu.astro"
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css"
 		/>
-		<!--utf8 -->
+
 		<meta charset="UTF-8" />
 	</head>
-	<Menu />
-	<!--Imagen de fondo de la pagina web -->
-	<div
-		class="w-500 h-200 h-screen bg-cover bg-center bg-no-repeat"
-		style="background-image: url('/public/fondo.svg'); background-size: 1350px 850px;"
-	>
-		<div class="w-400 h-100 flex h-full items-center justify-center">
-			<section class="flex justify-center">
-				<body class="font-sans">
-					<section class="flex justify-center">
-						<body class="font-sans">
-							<section class="mt-2">
-								<form action="/new_class" method="post" class="w-97 grid grid-cols-2 gap-4">
-									<div class="col-span-2 mb-4">
-										<label for="title" class="block">Titulo:</label>
-										<input
-											type="text"
-											id="title"
-											name="title"
-											class="w-full rounded border border-gray-300 p-2"
-										/>
-									</div>
-									<div>
-										<label for="date" class="block">Fecha:</label>
-										<input
-											type="date"
-											id="date"
-											name="date"
-											class="w-full rounded border border-gray-300 p-2"
-										/>
-									</div>
-									<div>
-										<label for="start_time" class="block">Hora de inicio:</label>
-										<input
-											type="time"
-											id="start_time"
-											name="start_time"
-											class="w-full rounded border border-gray-300 p-2"
-										/>
-									</div>
-									<div>
-										<label for="end_time" class="block">Hora de finalizacion:</label>
-										<input
-											type="time"
-											id="end_time"
-											name="end_time"
-											class="w-full rounded border border-gray-300 p-2"
-										/>
-									</div>
-									<div class="col-span-2">
-										<label for="description" class="block">Descripcion:</label>
-										<textarea
-											id="description"
-											name="description"
-											class="w-full resize-y rounded border border-gray-300 p-2"></textarea>
-									</div>
-									<div class="col-span-2 flex justify-end">
-										<button class="mr-8 mt-2 rounded-md bg-orange-500 px-2 py-1 text-white"
-											>Crear</button
-										>
-										<a href="/classes" class="mt-2 rounded-md bg-white px-2 py-1 text-black"
-											>Cancelar</a
-										>
-									</div>
-								</form>
+	<body>
+		<Menu />
 
-								<div class="w-1200 h-610 relative bg-cover bg-center bg-no-repeat">
-									<div class="absolute inset-0 bg-black opacity-50"></div>
-									<!-- Capa oscura para hacer legible el formulario -->
-									<div class="absolute inset-0 flex items-center justify-center">
-										<form
-											action="/new_class"
-											method="post"
-											class="w-11/12 rounded-lg bg-white bg-opacity-90 p-6 md:w-3/4 lg:w-1/2"
-										>
-											<!-- Contenido del formulario -->
-										</form>
-									</div>
-								</div>
-							</section>
-						</body>
-					</section>
-				</body>
-			</section>
+		<div
+			class="mx-auto my-5 flex w-[560px] items-center justify-center rounded-lg bg-orange-500 text-white"
+		>
+			<h1 class="text-4xl">Crear una nueva clase</h1>
+		</div>
+
+		<div class="mb-12 flex items-end justify-center bg-cover bg-center bg-no-repeat">
+			<div class="flex h-full items-center justify-center">
+				<section class="flex justify-center">
+					<body class="font-sans">
+						<section class="flex justify-center">
+							<body class="font-sans">
+								<section
+									class="my-3 mt-2 w-full max-w-xl rounded-lg border-[12px] border-solid border-gray-200 p-5"
+								>
+									<form action="/new_class" method="post" class="w-97 mx-12 grid grid-cols-2 gap-4">
+										<div class="flex flex-col">
+											<label for="title" class="block">Titulo:</label>
+											<input
+												type="text"
+												id="title"
+												name="title"
+												class="w-full rounded border border-gray-300 p-2"
+											/>
+										</div>
+										<div>
+											<label for="date" class="block">Fecha:</label>
+											<input
+												type="date"
+												id="date"
+												name="date"
+												class="w-full rounded border border-gray-300 p-2"
+											/>
+										</div>
+										<div>
+											<label for="start_time" class="block">Hora de inicio:</label>
+											<input
+												type="time"
+												id="start_time"
+												name="start_time"
+												class="w-full rounded border border-gray-300 p-2"
+											/>
+										</div>
+										<div>
+											<label for="end_time" class="block">Hora de finalizacion:</label>
+											<input
+												type="time"
+												id="end_time"
+												name="end_time"
+												class="w-full rounded border border-gray-300 p-2"
+											/>
+										</div>
+										<div class="col-span-2">
+											<label for="description" class="block">Descripcion:</label>
+											<textarea
+												id="description"
+												name="description"
+												class="w-full resize-y rounded border border-gray-300 p-2"></textarea>
+										</div>
+										<div class="col-span-2 flex justify-between">
+											<a href="/classes" class="mt-2 rounded-md bg-white px-2 py-1 text-black"
+												>Cancelar</a
+											>
+											<button class="mt-2 rounded-md bg-orange-500 px-4 py-1 text-white"
+												>Crear</button
+											>
+										</div>
+									</form>
+								</section>
+							</body>
+						</section>
+					</body>
+				</section>
+			</div>
 		</div>
 
 		<Footer />
-	</div>
-
-
+	</body>
 </html>
