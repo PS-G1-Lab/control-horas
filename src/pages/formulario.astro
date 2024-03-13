@@ -1,4 +1,5 @@
 ---
+import Wave from "@/components/Wave.astro"
 import Footer from "@/components/footer.astro"
 import Menu from "@/components/menu.astro"
 import Layout from "@/layouts/Layout.astro"
@@ -21,17 +22,17 @@ import Layout from "@/layouts/Layout.astro"
 		<body>
 			<Menu />
 			<div
-				class="mx-auto my-5 flex w-[580px] items-center justify-center rounded-lg bg-orange-500 text-white"
+				class="mx-auto my-5 flex w-[560px] items-center justify-center rounded-lg bg-orange-500 text-white"
 			>
 				<h1 class="text-4xl">Crear una nueva clase</h1>
 			</div>
 			<div
-				class="flex h-full items-center justify-center lg:ml-[300px] lg:flex lg:items-center lg:justify-center"
+				class="flex h-full items-center justify-center lg:ml-[220px] lg:flex lg:items-center lg:justify-center"
 			>
 				<section
 					class="my-3 flex w-[580px] justify-center rounded-lg border-[12px] border-solid border-gray-200 p-5 lg:ml-12 lg:w-1/2"
 				>
-					<form action="/new_class" method="post" class="w-97 mx-12 grid grid-cols-2 gap-4">
+					<form action="/new_class" method="post" class="grid grid-cols-2 gap-4">
 						<div class="flex flex-col">
 							<label for="title" class="block">Titulo:</label>
 							<input
@@ -84,8 +85,9 @@ import Layout from "@/layouts/Layout.astro"
 				<img
 					src="fondo.svg"
 					alt="Ilustración de una persona con un libro"
-					class="hidden lg:ml-6 lg:block"
+					class="hidden lg:block"
 				/>
+				<Wave class="absolute -z-10" />
 			</div>
 		</body>
 		<Footer />
