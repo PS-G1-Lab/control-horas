@@ -1,8 +1,27 @@
 ---
-import LayoutStudent from "@/layouts/LayoutStudentReg.astro";
-import LayoutTeacher from "@/layouts/LayoutTeacherReg.astro";
+import Layout from "@/layouts/Layout.astro"
+
+import Hero from "@/sections/Hero.astro"
+import Learn from "@/sections/Learn.astro"
+import Reviews from "@/sections/Reviews.astro"
+import Teach from "@/sections/Teach.astro"
+
+import Footer from "@/components/Footer.astro"
+import Header from "@/components/Header.astro"
+import Wave from "@/components/Wave.astro"
 ---
 
-<LayoutTeacher title="Registro" />
-
-<style></style>
+<Layout
+	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
+>
+	<Header />
+	<main class="mx-auto max-w-screen-xl py-2.5">
+		<Hero />
+		<Wave class="absolute right-0 -z-10 h-auto" />
+		<Learn />
+		<Teach />
+		<Reviews />
+	</main>
+	<Footer />
+</Layout>
