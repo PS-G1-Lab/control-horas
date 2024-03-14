@@ -30,6 +30,8 @@ const { title, description } = Astro.props
 </html>
 <style is:global>
 	:root {
+		--color-primary: #e6622e;
+		--color-secondary: #2f2e41;
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
 		--accent-dark: 49, 10, 101;
@@ -42,8 +44,9 @@ const { title, description } = Astro.props
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: #fff;
 		background-size: 224px;
+		color: #000;
 	}
 	code {
 		font-family:
