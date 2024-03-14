@@ -1,31 +1,4 @@
----
-import HeaderWeb from "@/components/HeaderRegistro.astro"
-import Title from "@/components/Title.astro"
-import Form from "@/components/FormStudent.astro"
-import Footer from "@/components/Footer.astro"
-
-interface Props {
-	title: string
-}
-
-const { title } = Astro.props
----
-
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width, initial-scale-1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<main>
-		<HeaderWeb />
-		<div class="flex flex-row items-center justify-between px-80 pb-14 pt-14">
-			<Form />
-			<svg
+<svg
 				width="303"
 				height="305"
 				viewBox="0 0 303 305"
@@ -75,14 +48,3 @@ const { title } = Astro.props
 					d="M286.868 301.279L254.849 199.509L254.854 199.509H254.928L254.798 199.342L254.795 199.339L252.515 192.09L252.516 192.089C255.99 189.095 258.356 184.817 258.827 179.892L244.191 99.3933C245.198 88.8227 237.094 79.5827 226.478 79.2039L193.454 79.1207C184.066 78.7881 175.935 85.5702 174.568 94.8657L173.838 99.7998L163.72 168.628C163.35 171.105 163.498 173.544 164.08 175.826L156.799 176.778L154.591 177.074L145.859 178.21L145.831 178.22L144.741 178.358H143.558V207.926H143.632V302.433C143.632 303.042 144.131 303.541 144.741 303.541C145.36 303.541 145.859 303.042 145.859 302.433V207.926H158.813L171.74 302.322C171.823 302.876 172.294 303.283 172.849 303.283C172.895 303.283 172.951 303.283 172.997 303.273C173.607 303.19 174.032 302.627 173.948 302.017L161.068 207.926H223.225C229.397 207.926 235.116 205.968 239.773 202.614L264.417 302.149C264.545 302.652 264.998 302.987 265.495 302.987C265.586 302.987 265.678 302.976 265.77 302.953C266.366 302.801 266.726 302.195 266.575 301.6L241.692 201.103C242.023 200.827 242.354 200.533 242.666 200.229L252.559 199.647L284.745 301.947C284.894 302.422 285.333 302.727 285.806 302.727C285.917 302.727 286.029 302.71 286.14 302.675C286.727 302.49 287.053 301.865 286.868 301.279ZM250.4 193.669C250.483 193.623 250.557 193.567 250.631 193.521L250.869 194.276L250.4 193.669Z"
 					fill="#E6E6E6"></path>
 			</svg>
-		</div>
-		<Footer />
-	</main>
-	<style>
-		@tailwind base;
-		@tailwind components;
-		@tailwind utilities;
-	</style>
-
-
-</html>
