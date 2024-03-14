@@ -1,35 +1,33 @@
 ---
-import Logo from "@/icons/Logo.astro"
+import Logo from '@/icons/Logo.astro'
 ---
 
 <header
-	class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-around py-2.5 text-black lg:justify-between"
->
+	class="flex flex-wrap justify-around lg:justify-between items-center mx-auto max-w-screen-xl py-2.5 text-black">
 	<a
 		href="/"
-		class="mb-3 transition ease-in-out hover:scale-[1.1] md:mb-0"
-		aria-current="page"
-		aria-label="Enlace que te lleva a la página principal de presentación"
-	>
+		class="hover:scale-[1.1] transition ease-in-out mb-3 md:mb-0"
+		aria-current="page" aria-label="Enlace que te lleva a la página principal de presentación" >
 		<Logo class="object-contain" />
 	</a>
-	<div class="flex items-center gap-4 lg:order-2">
-		<a href="/login" class="px-4 py-2 transition ease-in-out hover:text-primary">Iniciar Sesión</a>
+	<div class="flex items-center lg:order-2 gap-4">
+		<a href="/login" class="px-4 py-2 hover:text-primary transition ease-in-out"
+			>Iniciar Sesión</a
+		>
 		<a
 			href="/register"
-			class="rounded-lg border-2 border-primary px-4 py-2 transition ease-in-out hover:bg-primary hover:text-white"
+			class="px-4 py-2 border-2 rounded-lg border-primary hover:bg-primary hover:text-white transition ease-in-out"
 			>Registrarse</a
 		>
 		<button
 			data-collapse-toggle="mobile-menu"
 			type="button"
-			class="ml-1 inline-flex items-center rounded-lg p-2 text-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 lg:hidden"
+			class="inline-flex items-center p-2 ml-1 text-sm rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
 			aria-controls="mobile-menu"
 			aria-expanded="false"
-			aria-label="Botón para desplegar menú en dispositivos móviles"
-		>
+			aria-label="Botón para desplegar menú en dispositivos móviles">
 			<svg
-				class="h-6 w-6"
+				class="w-6 h-6"
 				fill="currentColor"
 				viewBox="0 0 20 20"
 				xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +37,7 @@ import Logo from "@/icons/Logo.astro"
 					clip-rule="evenodd"></path></svg
 			>
 			<svg
-				class="hidden h-6 w-6"
+				class="hidden w-6 h-6"
 				fill="currentColor"
 				viewBox="0 0 20 20"
 				xmlns="http://www.w3.org/2000/svg"
@@ -51,28 +49,28 @@ import Logo from "@/icons/Logo.astro"
 		</button>
 	</div>
 	<nav
-		class="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
-		id="mobile-menu"
-	>
-		<ul class="mt-4 flex flex-row justify-center font-medium lg:mt-0 lg:space-x-8">
+		class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+		id="mobile-menu">
+		<ul
+			class="flex mt-4 justify-center font-medium flex-row lg:space-x-8 lg:mt-0">
 			<li>
 				<a
 					href="/learn"
-					class="mx-3 rounded px-3 py-2 transition ease-in-out hover:bg-neutral-100 lg:mx-0"
+					class="px-3 py-2 rounded hover:bg-neutral-100 transition ease-in-out mx-3 lg:mx-0"
 					>Aprender</a
 				>
 			</li>
 			<li>
 				<a
 					href="/teach"
-					class="mx-3 rounded px-3 py-2 transition ease-in-out hover:bg-neutral-100 lg:mx-0"
+					class="px-3 py-2 rounded hover:bg-neutral-100 transition ease-in-out mx-3 lg:mx-0"
 					>Enseñar</a
 				>
 			</li>
 			<li>
 				<a
 					href="#opiniones"
-					class="mx-3 rounded px-3 py-2 transition ease-in-out hover:bg-neutral-100 lg:mx-0"
+					class="px-3 py-2 rounded hover:bg-neutral-100 transition ease-in-out mx-3 lg:mx-0"
 					>Opiniones</a
 				>
 			</li>
@@ -81,9 +79,11 @@ import Logo from "@/icons/Logo.astro"
 </header>
 
 <script>
-	const mobileMenu = document.querySelector('[data-collapse-toggle="mobile-menu"]')
-	const mobileMenuContent = document.querySelector("#mobile-menu")
-	mobileMenu.addEventListener("click", () => {
-		mobileMenuContent.classList.toggle("hidden")
+	const mobileMenu = document.querySelector(
+		'[data-collapse-toggle="mobile-menu"]'
+	)
+	const mobileMenuContent = document.querySelector('#mobile-menu')
+	mobileMenu.addEventListener('click', () => {
+		mobileMenuContent.classList.toggle('hidden')
 	})
 </script>
