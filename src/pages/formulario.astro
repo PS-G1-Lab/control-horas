@@ -1,0 +1,95 @@
+---
+import Wave from "@/components/Wave.astro"
+import Footer from "@/components/footer.astro"
+import Menu from "@/components/menu.astro"
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
+>
+	<html lang="es">
+		<head>
+			<title>Crear una nueva clase</title>
+			<link
+				rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css"
+			/>
+
+			<meta charset="UTF-8" />
+		</head>
+		<body>
+			<Menu />
+			<div
+				class="mx-auto my-5 flex w-[560px] items-center justify-center rounded-lg bg-orange-500 text-white"
+			>
+				<h1 class="text-4xl">Crear una nueva clase</h1>
+			</div>
+			<div
+				class="flex h-full items-center justify-center lg:ml-[220px] lg:flex lg:items-center lg:justify-center"
+			>
+				<section
+					class="my-3 flex w-[580px] justify-center rounded-lg border-[12px] border-solid border-gray-200 p-5 lg:ml-12 lg:w-1/2"
+				>
+					<form action="/new_class" method="post" class="grid grid-cols-2 gap-4">
+						<div class="flex flex-col">
+							<label for="title" class="block">Titulo:</label>
+							<input
+								type="text"
+								id="title"
+								name="title"
+								class="w-full rounded border border-gray-300 p-2"
+							/>
+						</div>
+						<div>
+							<label for="date" class="block">Fecha:</label>
+							<input
+								type="date"
+								id="date"
+								name="date"
+								class="w-full rounded border border-gray-300 p-2"
+							/>
+						</div>
+						<div>
+							<label for="start_time" class="block">Hora de inicio:</label>
+							<input
+								type="time"
+								id="start_time"
+								name="start_time"
+								class="w-full rounded border border-gray-300 p-2"
+							/>
+						</div>
+						<div>
+							<label for="end_time" class="block">Hora de finalizacion:</label>
+							<input
+								type="time"
+								id="end_time"
+								name="end_time"
+								class="w-full rounded border border-gray-300 p-2"
+							/>
+						</div>
+						<div class="col-span-2">
+							<label for="description" class="block">Descripcion:</label>
+							<textarea
+								id="description"
+								name="description"
+								class="w-full resize-y rounded border border-gray-300 p-2"></textarea>
+						</div>
+						<div class="col-span-2 flex justify-between">
+							<a href="/classes" class="mt-2 rounded-md bg-white px-2 py-1 text-black">Cancelar</a>
+							<button class="mt-2 rounded-md bg-orange-500 px-4 py-1 text-white">Crear</button>
+						</div>
+					</form>
+				</section>
+				<img
+					src="fondo.svg"
+					alt="Ilustración de una persona con un libro"
+					class="hidden lg:block"
+				/>
+				<Wave class="absolute -z-10" />
+			</div>
+		</body>
+		<Footer />
+	</html>
+</Layout>
