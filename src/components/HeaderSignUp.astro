@@ -1,0 +1,19 @@
+---
+import RoleButtons from "@/components/RoleButtons.svelte"
+
+import Logo from "@/icons/Logo.astro"
+---
+
+<header
+	class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-around py-2.5 text-black lg:justify-between"
+>
+	<a
+		href="/"
+		class="mb-3 transition ease-in-out hover:scale-[1.1] md:mb-0"
+		aria-current="page"
+		aria-label="Enlace que te lleva a la página principal de presentación"
+	>
+		<Logo class="object-contain" />
+	</a>
+	<RoleButtons client:idle />
+</header>
