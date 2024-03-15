@@ -1,0 +1,17 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import Error from "@/sections/Error.astro"
+---
+
+<Layout
+	title="GestionAppmos - Página no encontrada"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial"
+>
+	<main>
+		<Error
+			error="404"
+			message="Página no encontrada"
+			contextMessage="¡Hola! Lo sentimos, pero no pudimos encontrar lo que buscabas. Verifica que la dirección URL sea correcta."
+		/>
+	</main>
+</Layout>
