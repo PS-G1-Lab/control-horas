@@ -19,7 +19,7 @@
 	</div>
 	<div class="flex flex-row text-xl w-full justify-center items-center gap-20">
 		<a
-			href="/register"
+			href="/signup"
 			class="text-white bg-primary py-2 px-4 rounded-md flex items-center justify-center gap-3"
 			>Comenzar <RightArrow /></a
 		>
