@@ -7,8 +7,11 @@
 	}
 </script>
 
-<input {type} {id} class="border-b-2 border-solid border-black" {placeholder} />
-<label for={id}>{content}</label>
+<div class="relative">
+	<input {type} {id} class="border-b-2 border-solid border-black" {placeholder} />
+	<label for={id}>{content}</label>
+</div>
+
 
 <style>
 	input {
