@@ -1,18 +1,18 @@
 ---
 interface Props {
-  type: "password";
-  id: string;
-  content: string;
-  placeholder: string;
+	type: "password"
+	id: string
+	content: string
+	placeholder: string
 }
 
-const { type, id, content, placeholder } = Astro.props;
+const { type, id, content, placeholder } = Astro.props
 ---
 
 <input
-  type={type}
-  id={id}
-  class="border-b-2 border-black outline-none w-full max-w-md"
-  placeholder={placeholder}
+	type={type}
+	id={id}
+	class="w-full max-w-md border-b-2 border-black outline-none"
+	placeholder={placeholder}
 />
 <label for={id}>{content}</label>
