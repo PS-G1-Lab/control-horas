@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
+>
+	<section class="flex h-screen items-center justify-center bg-gray-100">
+		<div class="mx-auto max-w-md rounded-md bg-white p-6 shadow-md">
+			<h2 class="mb-4 text-center text-2xl font-semibold">¡La sesión se ha cerrado con éxito!</h2>
+			<p class="text-center text-gray-600">
+				Gracias por usar nuestra aplicación. ¡Esperamos verte pronto de nuevo!
+			</p>
+		</div>
+	</section>
+</Layout>
+
+<script>
+	setTimeout(() => {
+		window.location.href = "/"
+	}, 3000)
+</script>
