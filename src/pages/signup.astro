@@ -1,21 +1,18 @@
 ---
-import CardLogin from "@/components/CardLogin.astro"
-import Footer from "@/components/Footer.astro"
-import Header from "@/components/Header.astro"
-import Wave from "@/components/Wave.astro"
 import Layout from "@/layouts/Layout.astro"
+
+import Footer from "@/components/Footer.astro"
+import HeaderSignUp from "@/components/HeaderSignUp.astro"
+import SignUpForm from "@/components/SignUpForm.svelte"
 ---
 
 <Layout
 	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
 	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
 >
-	<Wave class="absolute right-0 -z-10 h-auto rotate-180" />
-	<Header />
-	<main>
-		<section class="flex content-center justify-center">
-			<CardLogin />
-		</section>
+	<HeaderSignUp />
+	<main class="mx-auto my-10 max-w-screen-xl py-2.5">
+		<SignUpForm client:idle />
 	</main>
 	<Footer />
 </Layout>

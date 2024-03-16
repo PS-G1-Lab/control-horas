@@ -1,15 +1,13 @@
----
-interface Props {
-	type: "text" | "password" | "email"
-	id: string
-	content: string
-	placeholder: string
-}
+<script>
+	export let { type, id, content, placeholder } = {
+		type: "text",
+		id: "input",
+		content: "Input",
+		placeholder: " ",
+	}
+</script>
 
-const { type, id, content, placeholder } = Astro.props
----
-
-<input type={type} id={id} class="border-b-2 border-solid border-black" placeholder={placeholder} />
+<input {type} {id} class="border-b-2 border-solid border-black" {placeholder} />
 <label for={id}>{content}</label>
 
 <style>
