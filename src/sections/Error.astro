@@ -1,0 +1,27 @@
+---
+import Logo from "@/icons/Logo.astro"
+
+const { error, message, contextMessage } = Astro.props
+---
+
+<section class="m-auto flex h-screen w-screen flex-col items-center justify-center text-primary">
+	<a
+		href="/"
+		class="mx-auto p-5 transition ease-in-out hover:scale-[1.1]"
+		aria-current="page"
+		aria-label="Enlace que te lleva a la página principal de presentación"
+	>
+		<Logo class="" />
+	</a>
+	<div class="m-5 mt-10 text-center">
+		<h1 class="mb-5 text-3xl font-bold">Error {error}</h1>
+		<h2 class="text-2xl">{message}</h2>
+		<p class="mb-10 mt-5 max-w-80 text-xl">{contextMessage}</p>
+		<a
+			href="/"
+			class="rounded-lg border-2 border-primary px-4 py-2 transition ease-in-out hover:bg-primary hover:text-white"
+			aria-label="volver a la página principal"
+			>Ir al inicio
+		</a>
+	</div>
+</section>

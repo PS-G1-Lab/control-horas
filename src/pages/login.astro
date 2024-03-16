@@ -1,0 +1,18 @@
+---
+import CardLogin from "../components/CardLogin.astro";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+import Wave from "../components/Wave.astro";
+---
+
+<Layout title="Login">
+	<Wave class="absolute right-0 -z-10 h-auto rotate-180" />
+	<Header />
+	<main>
+		<section class="flex justify-center content-center">
+			<CardLogin />
+		</section>
+	</main>
+	<Footer />
+</Layout>

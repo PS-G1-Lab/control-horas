@@ -1,0 +1,20 @@
+---
+import Form from "../components/Form.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Página de inicio">
+  <section class="flex justify-center content-center">
+    <div class="min-h-screen flex justify-center content-center items-center">
+      <div class="bg-white shadow-md p-8 border border-orange-500">
+        <Form />
+      </div>
+    </div>
+
+    <img
+      src="undrow.svg"
+      alt="Ilustración de un hombre agarrando la tarjeta de login"
+      class="hidden lg:block"
+    />
+  </section>
+</Layout>
