@@ -10,7 +10,13 @@
 	class="hidden lg:inline-block mr-10 w-auto object-contain aspect-w-1 aspect-h-1 "
 />
 <form class="flex flex-col items-center gap-y-12 lg:w-1/2 ">
-	<Title title="Registro profesor" />
+	<div class="flex flex-col gap-y-2">
+		<Title title="Registro profesor" />
+		<h2 class="text-lm flex justify-center font-sans font-bold">
+				¿Ya tienes cuenta?&nbsp
+				<a href="/login" class="underline text-orange-500">Inicia sesión</a>
+		</h2>
+	</div>
 	<div class="relative flex justify-center w-80">
 		<Input type="text" id="name" content="Nombre:" placeholder=" " />
 	</div>
