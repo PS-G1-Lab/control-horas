@@ -1,5 +1,5 @@
 ---
-import Star from "@/icons/Star.astro"
+import Opinions from "@/components/Opinions.astro"
 ---
 
 <section class="my-20 flex flex-col items-center justify-center">
@@ -11,34 +11,16 @@ import Star from "@/icons/Star.astro"
 			class="hidden aspect-auto lg:block lg:h-[28rem]"
 		/>
 		<div class="margin-auto ml-32">
-			<article class="mb-8 w-96 rounded-lg border border-black px-8 py-8">
-				<h1 class="mb-4 font-medium">Padre de un estudiante de Física</h1>
-				<p>
-					El profesor tiene mucho dominio, es paciente y adapta sus clases a las necesidades de mi
-					hijo. Las notas mejoraron mucho. Muy recomendable.
-				</p>
-				<div class="mt-4 flex flex-row justify-end">
-					<Star />
-					<Star />
-					<Star />
-					<Star />
-					<Star />
-				</div>
-			</article>
-			<article class="mb-8 w-96 rounded-lg border border-black px-8 py-8">
-				<h1 class="mb-4 font-medium">Estudiante de Python</h1>
-				<p>
-					El profesor tiene un gran conocimiento de Python, gracias a él he aprendido mucho. Lo
-					recomiendo al 100%.
-				</p>
-				<div class="mt-4 flex flex-row justify-end">
-					<Star />
-					<Star />
-					<Star />
-					<Star />
-					<Star />
-				</div>
-			</article>
+			<Opinions
+				who="Padre de un estudiante de Física"
+				opinion="El profesor tiene mucho dominio, es paciente y adapta sus clases a las necesidades de mi hijo. Las notas mejoraron mucho. Muy recomendable."
+				stars={4}
+			/>
+			<Opinions
+				who="Estudiante de Python"
+				opinion="El profesor tiene un gran conocimiento de Python, gracias a él he aprendido mucho. Lo recomiendo al 100%."
+				stars={5}
+			/>
 		</div>
 	</div>
 </section>

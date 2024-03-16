@@ -1,0 +1,62 @@
+---
+import AlterHeader from "@/components/AlterHeader.astro"
+import Button from "@/components/Button.astro"
+import Footer from "@/components/Footer.astro"
+import Textbox from "@/components/Textbox.astro"
+import LogoutIcon from "@/icons/LogoutIcon.astro"
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
+>
+	<AlterHeader />
+	<section
+		class="mx-auto my-8 w-[720px] flex-col items-center justify-center gap-4 rounded border border-black p-8"
+	>
+		<h2 class="text-lm mb-4 flex text-center font-sans font-bold">Información Personal</h2>
+		<form class="mb-4 flex flex-col gap-4">
+			<div>
+				<label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+				<Textbox type="text" id="name" content="" placeholder="" />
+			</div>
+			<div>
+				<label for="email" class="block text-sm font-medium text-gray-700">Correo</label>
+				<Textbox type="email" id="email" content="" placeholder="" />
+			</div>
+			<Button content="Editar Información" />
+		</form>
+	</section>
+
+	<section
+		class="mx-auto mb-8 w-[720px] flex-col items-center justify-center gap-4 rounded border border-black p-8"
+	>
+		<h2 class="text-lm mb-4 flex text-center font-sans font-bold">Contraseña</h2>
+		<form class="mb-4 flex flex-col gap-4">
+			<p>Si quieres actualizar tu contraseña. ¡Pulsa aquí!</p>
+			<a
+				href="/update"
+				class="mx-auto
+				w-60
+				justify-center
+				rounded-full
+				bg-orange-500
+				py-2
+				text-center
+				text-lg
+				font-bold
+				text-white hover:bg-orange-600"
+				>Actualizar contraseña
+			</a>
+		</form>
+	</section>
+	<div class="mx-auto mb-8 flex w-[720px] items-center justify-between">
+		<a href="/logout" class="flex items-center gap-2 text-lg font-semibold">
+			<LogoutIcon />
+			<span>Cerrar Sesión</span>
+		</a>
+		<div><Button content="Guardar Cambios" /></div>
+	</div>
+	<Footer />
+</Layout>
