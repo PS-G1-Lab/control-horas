@@ -12,9 +12,8 @@ import Layout from "@/layouts/Layout.astro"
 	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
 >
 	<AlterHeader />
-
-	<div
-		class="mx-auto mb-8 w-[720px] flex-col items-center justify-center gap-4 rounded border border-black p-8"
+	<section
+		class="mx-auto my-8 w-[720px] flex-col items-center justify-center gap-4 rounded border border-black p-8"
 	>
 		<h2 class="text-lm mb-4 flex text-center font-sans font-bold">Información Personal</h2>
 		<form class="mb-4 flex flex-col gap-4">
@@ -28,9 +27,9 @@ import Layout from "@/layouts/Layout.astro"
 			</div>
 			<Button content="Editar Información" />
 		</form>
-	</div>
+	</section>
 
-	<div
+	<section
 		class="mx-auto mb-8 w-[720px] flex-col items-center justify-center gap-4 rounded border border-black p-8"
 	>
 		<h2 class="text-lm mb-4 flex text-center font-sans font-bold">Contraseña</h2>
@@ -51,12 +50,13 @@ import Layout from "@/layouts/Layout.astro"
 				>Actualizar contraseña
 			</a>
 		</form>
-	</div>
-	<div class="mx-auto mb-8 flex w-[720px] justify-between">
-		<a href="/logout">
+	</section>
+	<div class="mx-auto mb-8 flex w-[720px] items-center justify-between">
+		<a href="/logout" class="flex items-center gap-2 text-lg font-semibold">
 			<LogoutIcon />
+			<span>Cerrar Sesión</span>
 		</a>
-		<Button content="Guardar Cambios" />
+		<div><Button content="Guardar Cambios" /></div>
 	</div>
 	<Footer />
 </Layout>
