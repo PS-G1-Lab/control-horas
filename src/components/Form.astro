@@ -1,0 +1,22 @@
+---
+import Button from "@/components/Button.astro"
+import Input from "@/components/Input.astro"
+import Logo from "@/icons/Logo.astro"
+---
+
+<section class="flex flex-col">
+	<Logo />
+	<form class="flex flex-col gap-y-12">
+		<h2 class="text-lm flex justify-center font-sans font-bold">
+			¿Es tu primera vez?&nbsp
+			<a href="#" class="underline">Regístrate</a>
+		</h2>
+		<div class="relative">
+			<Input type="email" id="mail" content="Correo:" placeholder=" " />
+		</div>
+		<div class="relative">
+			<Input type="password" id="passwd" content="Contraseña:" placeholder=" " />
+		</div>
+		<Button content="Iniciar Sesión" />
+	</form>
+</section>
