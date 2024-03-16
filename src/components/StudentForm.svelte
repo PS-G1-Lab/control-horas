@@ -3,18 +3,18 @@
 	import Title from "./Title.svelte"
 </script>
 
-<form class="flex flex-col gap-y-12 lg:w-1/2">
+<form class="flex flex-col items-center gap-y-12 lg:w-1/2">
 	<Title title="Registro alumno" />
-	<div class="relative">
+	<div class="relative flex justify-center w-80">
 		<Input type="text" id="name" content="Nombre:" placeholder=" " />
 	</div>
-	<div class="relative">
+	<div class="relative flex justify-center w-80">
 		<Input type="email" id="mail" content="Correo:" placeholder=" " />
 	</div>
-	<div class="relative">
+	<div class="relative flex justify-center w-80">
 		<Input type="password" id="passwd" content="Contraseña:" placeholder=" " />
 	</div>
-	<div class="relative">
+	<div class="relative flex justify-center w-80">
 		<Input type="password" id="confirmPasswd" content="Confirmar contraseña:" placeholder=" " />
 	</div>
 	<button
@@ -24,4 +24,4 @@
 		Registrarse
 	</button>
 </form>
-<img src="/img/girl-studing.svg" alt="Imagen de alumna sentada en un pupitre" class="hidden lg:inline-block" />
+<img src="/img/girl-studing.svg" alt="Imagen de alumna sentada en un pupitre" class="hidden lg:inline-block w-auto object-contain aspect-w-1 aspect-h-1" />
