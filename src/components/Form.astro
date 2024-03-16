@@ -1,5 +1,6 @@
 ---
 import Input from "../components/Input.astro";
+import Button from "../components/button.astro";
 ---
 
 <section class="flex flex-col">
@@ -9,8 +10,8 @@ import Input from "../components/Input.astro";
     class="lg:block"
   />
   <form class="flex flex-col gap-y-12">
-    <h2 class="flex font-sans text-lm mt-9 font-bold justify-center">
-			¿Es tu primera vez?&nbsp
+    <h2 class="flex font-sans text-lm font-bold justify-center">
+      ¿Es tu primera vez?&nbsp
       <a href="#" class="underline">Regístrate</a>
     </h2>
     <div class="relative">
@@ -24,11 +25,6 @@ import Input from "../components/Input.astro";
         placeholder=" "
       />
     </div>
-    <button
-      type="submit"
-      class="mx-auto w-56 bg-orange-500 text-white py-2 px-4 rounded-full font-bold text-lg hover:bg-orange-600 justify-center"
-    >
-      Iniciar Sesión
-    </button>
+    <Button content="Iniciar Sesión" />
   </form>
 </section>
