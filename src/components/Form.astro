@@ -1,30 +1,21 @@
 ---
-import Input from "../components/Input.astro";
-import Button from "../components/button.astro";
+import Input from "../components/Input.astro"
+import Button from "../components/button.astro"
 ---
 
 <section class="flex flex-col">
-  <img
-    src="logo.svg"
-    alt="Ilustración del logo de la página"
-    class="lg:block"
-  />
-  <form class="flex flex-col gap-y-12">
-    <h2 class="flex font-sans text-lm font-bold justify-center">
-      ¿Es tu primera vez?&nbsp
-      <a href="#" class="underline">Regístrate</a>
-    </h2>
-    <div class="relative">
-      <Input type="email" id="mail" content="Correo:" placeholder=" " />
-    </div>
-    <div class="relative">
-      <Input
-        type="password"
-        id="passwd"
-        content="Contraseña:"
-        placeholder=" "
-      />
-    </div>
-    <Button content="Iniciar Sesión" />
-  </form>
+	<img src="logo.svg" alt="Ilustración del logo de la página" class="lg:block" />
+	<form class="flex flex-col gap-y-12">
+		<h2 class="text-lm flex justify-center font-sans font-bold">
+			¿Es tu primera vez?&nbsp
+			<a href="#" class="underline">Regístrate</a>
+		</h2>
+		<div class="relative">
+			<Input type="email" id="mail" content="Correo:" placeholder=" " />
+		</div>
+		<div class="relative">
+			<Input type="password" id="passwd" content="Contraseña:" placeholder=" " />
+		</div>
+		<Button content="Iniciar Sesión" />
+	</form>
 </section>
