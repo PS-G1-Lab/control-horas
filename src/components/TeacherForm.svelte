@@ -54,26 +54,26 @@
 			return
 		}
 
-		if (data.password !== data.confirmPasswd) {
-			errors.confirmPasswordError = "Las contraseñas no coinciden"
+		const formData = new FormData()
+		formData.append("userName", data.userName)
+		formData.append("email", data.email)
+		formData.append("password", data.password)
+		formData.append("role", data.role)
+
+		const res = await fetch("/api/signup", {
+			method: "POST",
+			body: formData,
+		})
+
+		if (!res.ok) {
+			const error = await res.json()
+			errors.serverError = error.message
 			return
-		} else errors.confirmPasswordError = ""
+		}
 
-		console.log(data)
-
-		// const formData = new FormData()
-		// console.log(form)
-
-		// const res = await fetch("/api/register", {
-		// 	method: "POST",
-		// 	body: JSON.stringify(data),
-		// })
-
-		// if (!res.ok) {
-		// 	const error = await res.json()
-		// 	console.error(error)
-		// 	return
-		// }
+		const result = await res.json()
+		console.log(result)
+		// redirigir a la página de inicio
 	}
 </script>
 
