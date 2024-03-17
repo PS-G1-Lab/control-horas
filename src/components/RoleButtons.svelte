@@ -1,6 +1,17 @@
 <script>
 	import { ROLE_STATUS, appStatus, setAppStatusStudent, setAppStatusTeacher } from "@/store.ts"
 
+	if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+		const localAppStatus = localStorage?.getItem("role")
+		if (localAppStatus) {
+			if (+localAppStatus === ROLE_STATUS.STUDENT) {
+				setAppStatusStudent()
+			} else {
+				setAppStatusTeacher()
+			}
+		}
+	}
+
 	const classButtons = {
 		active: "py-2 px-3 border-b-2 border-l-2 border-primary",
 		inactive:
@@ -21,12 +32,14 @@
 		setAppStatusStudent()
 		classStudent = classButtons.active
 		classTeacher = classButtons.inactive
+		localStorage.setItem("role", $appStatus)
 	}
 
 	function handleRoleChangeToTeacher(e) {
 		setAppStatusTeacher()
 		classStudent = classButtons.inactive
 		classTeacher = classButtons.active
+		localStorage.setItem("role", $appStatus)
 	}
 </script>
 
