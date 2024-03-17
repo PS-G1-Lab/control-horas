@@ -123,12 +123,8 @@
 		class="mx-auto w-56 justify-center rounded-full bg-orange-500 px-4 py-2 text-lg font-bold text-white hover:bg-orange-600"
 	/>
 </form>
-<<<<<<< Updated upstream
-<img src="/img/girl-studing.svg" alt="Imagen de alumna sentada en un pupitre" class="hidden lg:inline-block" />
-=======
 <img
 	src="/img/girl-studing.svg"
 	alt="Imagen de alumna sentada en un pupitre"
 	class="hidden lg:inline-block w-auto object-contain aspect-w-1 aspect-h-1"
 />
->>>>>>> Stashed changes
