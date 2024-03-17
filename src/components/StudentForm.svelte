@@ -75,7 +75,7 @@
 		formData.append("password", data.password)
 		formData.append("role", data.role)
 
-		const res = await fetch("/api/signup", {
+		const res = await fetch("http://localhost:1234/user/signup", {
 			method: "POST",
 			body: formData,
 		})
