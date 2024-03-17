@@ -10,6 +10,9 @@ export const POST: APIRoute = async ({ request }) => {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const response = await fetch("http://localhost:1234/user/signup", {
 		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
 		body: JSON.stringify(userData),
 	})
 		.then((response) => response.json())
