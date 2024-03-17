@@ -15,7 +15,7 @@ import Layout from "@/layouts/Layout.astro"
 	>
 		<section class="my-3 mb-12 flex w-[580px] flex-col justify-center lg:w-1/2">
 			<div
-				class="mx-auto my-5 flex w-full items-center justify-center rounded-lg bg-orange-500 text-white"
+				class="mx-auto my-5 flex w-full items-center justify-center rounded-lg bg-primary text-white"
 			>
 				<h1 class="mx-auto py-1 text-4xl">Creación de una nueva clase</h1>
 			</div>
@@ -68,8 +68,13 @@ import Layout from "@/layouts/Layout.astro"
 						class="w-full resize-y rounded border border-gray-300 p-2"></textarea>
 				</div>
 				<div class="col-span-2 flex justify-between">
-					<a href="/classes" class="mt-2 rounded-md bg-white px-2 py-1 text-black">Cancelar</a>
-					<button class="mt-2 rounded-md bg-orange-500 px-4 py-1 text-white">Crear</button>
+					<a
+						href="/classes"
+						class="pointer-events-none mt-2 rounded-md bg-white px-2 py-1 opacity-50">Cancelar</a
+					>
+					<button class="mt-2 rounded-md bg-primary px-4 py-1 text-white opacity-50" disabled="true"
+						>Crear</button
+					>
 				</div>
 			</form>
 		</section>
