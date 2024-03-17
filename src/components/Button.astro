@@ -1,0 +1,24 @@
+---
+interface Props {
+	content: string
+	disable: boolean
+}
+
+const { content, disable } = Astro.props
+---
+
+<button
+	class="mx-auto
+  w-56
+  justify-center
+  rounded-full
+  bg-orange-500
+  py-2
+  text-lg
+  font-bold
+  text-white
+  hover:bg-primary"
+	disabled={disable}
+>
+	{content}
+</button>

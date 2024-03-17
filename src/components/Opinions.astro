@@ -1,0 +1,21 @@
+---
+import Star from "@/icons/Star.astro"
+
+interface Props {
+	who: string
+	opinion: string
+	stars: number
+}
+
+const { who, opinion, stars } = Astro.props
+---
+
+<article class="mb-8 w-96 rounded-lg border border-black px-8 py-8">
+	<h1 class="mb-4 font-medium">{who}</h1>
+	<p>
+		{opinion}
+	</p>
+	<div class="mt-4 flex flex-row justify-end">
+		{stars && Array.from({ length: stars }, (_, i) => <Star key={i} />)}
+	</div>
+</article>

@@ -1,0 +1,89 @@
+---
+import AlterHeader from "@/components/AlterHeader.astro"
+import Footer from "@/components/Footer.astro"
+import Wave from "@/components/Wave.astro"
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
+>
+	<AlterHeader />
+	<div
+		class="mx-auto flex h-full items-center justify-center lg:ml-[220px] lg:flex lg:items-center lg:justify-center"
+	>
+		<section class="my-3 mb-12 flex w-[580px] flex-col justify-center lg:w-1/2">
+			<div
+				class="mx-auto my-5 flex w-full items-center justify-center rounded-lg bg-primary text-white"
+			>
+				<h1 class="mx-auto py-1 text-4xl">Creación de una nueva clase</h1>
+			</div>
+			<form
+				action="/new_class"
+				method="post"
+				class="grid grid-cols-2 gap-4 rounded-lg border-[12px] border-solid border-gray-200 p-5"
+			>
+				<div class="flex flex-col">
+					<label for="title" class="block">Titulo:</label>
+					<input
+						type="text"
+						id="title"
+						name="title"
+						class="w-full rounded border border-gray-300 p-2"
+					/>
+				</div>
+				<div>
+					<label for="date" class="block">Fecha:</label>
+					<input
+						type="date"
+						id="date"
+						name="date"
+						class="w-full rounded border border-gray-300 p-2"
+					/>
+				</div>
+				<div>
+					<label for="start_time" class="block">Hora de inicio:</label>
+					<input
+						type="time"
+						id="start_time"
+						name="start_time"
+						class="w-full rounded border border-gray-300 p-2"
+					/>
+				</div>
+				<div>
+					<label for="end_time" class="block">Hora de finalizacion:</label>
+					<input
+						type="time"
+						id="end_time"
+						name="end_time"
+						class="w-full rounded border border-gray-300 p-2"
+					/>
+				</div>
+				<div class="col-span-2">
+					<label for="description" class="block">Descripcion:</label>
+					<textarea
+						id="description"
+						name="description"
+						class="w-full resize-y rounded border border-gray-300 p-2"></textarea>
+				</div>
+				<div class="col-span-2 flex justify-between">
+					<a
+						href="/classes"
+						class="pointer-events-none mt-2 rounded-md bg-white px-2 py-1 opacity-50">Cancelar</a
+					>
+					<button class="mt-2 rounded-md bg-primary px-4 py-1 text-white opacity-50" disabled="true"
+						>Crear</button
+					>
+				</div>
+			</form>
+		</section>
+		<img
+			src="img/man-take-form.svg"
+			alt="Ilustración de una persona con un libro"
+			class="mt-32 hidden lg:block"
+		/>
+		<Wave class="absolute right-0 -z-10 h-auto" />
+	</div>
+	<Footer />
+</Layout>
