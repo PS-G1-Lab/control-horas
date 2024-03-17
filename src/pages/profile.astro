@@ -25,7 +25,7 @@ import Layout from "@/layouts/Layout.astro"
 				<label for="email" class="block text-sm font-medium text-gray-700">Correo</label>
 				<Textbox type="email" id="email" content="" placeholder="" />
 			</div>
-			<Button content="Editar Información" />
+			<Button content="Editar Información" disable={false} />
 		</form>
 	</section>
 
@@ -46,7 +46,7 @@ import Layout from "@/layouts/Layout.astro"
 				text-center
 				text-lg
 				font-bold
-				text-white hover:bg-orange-600"
+				text-white hover:bg-primary"
 				>Actualizar contraseña
 			</a>
 		</form>
@@ -56,7 +56,7 @@ import Layout from "@/layouts/Layout.astro"
 			<LogoutIcon />
 			<span>Cerrar Sesión</span>
 		</a>
-		<div><Button content="Guardar Cambios" /></div>
+		<div><Button content="Guardar Cambios" disable={false} /></div>
 	</div>
 	<Footer />
 </Layout>

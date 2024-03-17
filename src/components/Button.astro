@@ -1,9 +1,10 @@
 ---
 interface Props {
 	content: string
+	disable: boolean
 }
 
-const { content } = Astro.props
+const { content, disable } = Astro.props
 ---
 
 <button
@@ -16,7 +17,8 @@ const { content } = Astro.props
   text-lg
   font-bold
   text-white
-  hover:bg-orange-600"
+  hover:bg-primary"
+	disabled={disable}
 >
 	{content}
 </button>
