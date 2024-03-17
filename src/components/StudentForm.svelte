@@ -4,7 +4,13 @@
 </script>
 
 <form class="flex flex-col items-center gap-y-12 lg:w-1/2">
-	<Title title="Registro alumno" />
+	<div class="flex flex-col gap-y-2">
+		<Title title="Registro alumno" />
+		<h2 class="text-lm flex justify-center font-sans font-bold">
+				¿Ya tienes cuenta?&nbsp
+				<a href="/login" class="underline text-orange-500">Inicia sesión</a>
+		</h2>
+	</div>
 	<div class="relative flex justify-center w-80">
 		<Input type="text" id="name" content="Nombre:" placeholder=" " />
 	</div>

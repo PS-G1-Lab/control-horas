@@ -26,6 +26,10 @@ import Layout from "@/layouts/Layout.astro"
 					<form>
 						<h2 class="mb-4 mr-32 text-2xl font-bold">Nueva Contraseña</h2>
 						<div class="mb-4">
+							<Textpassword content="Email" />
+						</div>
+						<Textbox type="email" id="email" content="" placeholder="Email" />
+						<div class="mb-4">
 							<Textpassword content="Contraseña" />
 						</div>
 						<Textbox type="password" id="oldpassword" content="" placeholder="Contraseña" />
