@@ -7,6 +7,7 @@
 		emailError: "",
 		passwordError: "",
 		confirmPasswordError: "",
+		serverError: "",
 	}
 
 	async function handleUserSignUp(e) {
@@ -58,24 +59,45 @@
 			return
 		} else errors.confirmPasswordError = ""
 
-		console.log(data)
+		if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+			const localRole = localStorage.getItem("role")
+			if (localRole !== data.role) {
+				console.log(
+					"¡Atención! 🛑 ¡Este sistema está protegido por una muralla impenetrable! Los hackers encontrarán solo puertas cerradas. 🚪🔒 #SeguridadTotal"
+				)
+				return
+			}
+		}
 
-		// const formData = new FormData()
-		// console.log(form)
+		const formData = new FormData()
+		formData.append("userName", data.userName)
+		formData.append("email", data.email)
+		formData.append("password", data.password)
+		formData.append("role", data.role)
 
-		// const res = await fetch("/api/register", {
-		// 	method: "POST",
-		// 	body: JSON.stringify(data),
-		// })
+		const res = await fetch("/api/signup", {
+			method: "POST",
+			body: formData,
+		})
 
-		// if (!res.ok) {
-		// 	const error = await res.json()
-		// 	console.error(error)
-		// 	return
-		// }
+		if (!res.ok) {
+			const error = await res.json()
+			errors.serverError = error.message
+			return
+		}
+
+		const result = await res.json()
+		console.log(result)
+		// redirigir a la página de inicio
 	}
 </script>
 
+{#if errors.serverError}
+	<div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
+		<span class="font-medium">Ha habido un error interno.</span> Sentimos las molestias. Por favor, inténtalo
+		de nuevo más tarde.
+	</div>
+{/if}
 <form class="flex flex-col items-center gap-y-12 lg:w-1/2" on:submit={(e) => handleUserSignUp(e)}>
 	<div class="flex flex-col gap-y-2">
 		<Title title="Registro alumno" />
