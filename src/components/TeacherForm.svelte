@@ -61,19 +61,25 @@
 
 		console.log(data)
 
-		// const formData = new FormData()
-		// console.log(form)
+		const formData = new FormData()
+		formData.append("userName", data.userName)
+		formData.append("email", data.email)
+		formData.append("password", data.password)
+		formData.append("role", data.role)
 
-		// const res = await fetch("/api/register", {
-		// 	method: "POST",
-		// 	body: JSON.stringify(data),
-		// })
+		const res = await fetch("/api/signup", {
+			method: "POST",
+			body: formData,
+		})
 
-		// if (!res.ok) {
-		// 	const error = await res.json()
-		// 	console.error(error)
-		// 	return
-		// }
+		if (!res.ok) {
+			const error = await res.json()
+			errors.serverError = error.message
+			return
+		}
+
+		const result = await res.json()
+		console.log(result)
 	}
 </script>
 
