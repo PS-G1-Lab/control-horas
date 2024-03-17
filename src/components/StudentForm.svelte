@@ -76,7 +76,7 @@
 	}
 </script>
 
-<form class="flex flex-col items-center gap-y-12 lg:w-1/2">
+<form class="flex flex-col items-center gap-y-12 lg:w-1/2" on:submit={(e) => handleUserSignUp(e)}>
 	<div class="flex flex-col gap-y-2">
 		<Title title="Registro alumno" />
 		<h2 class="text-lm flex justify-center font-sans font-bold">
@@ -85,7 +85,7 @@
 		</h2>
 	</div>
 	<div class="relative flex justify-center w-80">
-		<Input type="text" id="userName" content="Nombre:" placeholder=" " />
+		<Input type="text" id="userName" content="Nombre:" />
 	</div>
 	{#if errors.userNameError}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
@@ -93,7 +93,7 @@
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
-		<Input type="email" id="email" content="Correo:" placeholder=" " />
+		<Input type="email" id="email" content="Correo:" />
 	</div>
 	{#if errors.emailError}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
@@ -101,7 +101,7 @@
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
-		<Input type="password" id="password" content="Contraseña:" placeholder=" " />
+		<Input type="password" id="password" content="Contraseña:" />
 	</div>
 	{#if errors.passwordError}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
@@ -109,7 +109,7 @@
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
-		<Input type="password" id="confirmPasswd" content="Confirmar contraseña:" placeholder=" " />
+		<Input type="password" id="confirmPassword" content="Confirmar contraseña:" />
 	</div>
 	{#if errors.confirmPasswordError}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
