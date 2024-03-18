@@ -4,6 +4,10 @@ import Button from "@/components/Button.astro"
 import Footer from "@/components/Footer.astro"
 import Wave from "@/components/Wave.astro"
 import Layout from "@/layouts/Layout.astro"
+
+if (!Astro.cookies.has("session")) {
+	return Astro.redirect("/login")
+}
 ---
 
 <Layout
@@ -14,7 +18,6 @@ import Layout from "@/layouts/Layout.astro"
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Panel de Administración</title>
-		<!-- Incluir Tailwind CSS -->
 		<link
 			href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
 			rel="stylesheet"
@@ -24,7 +27,6 @@ import Layout from "@/layouts/Layout.astro"
 		<AlterHeader />
 		<Wave class="absolute right-0 -z-10 h-auto" />
 		<section class="container mx-auto mb-16 mt-[90px] p-4">
-			<!-- Agregado mt-8 para separación desde el header -->
 			<div class="grid grid-cols-2 gap-4">
 				<div class="mb-8 flex items-center justify-center rounded border">
 					<div class="text-center">
