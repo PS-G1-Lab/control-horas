@@ -1,21 +1,21 @@
 ---
-import CardLogin from "@/components/CardLogin.astro"
+import Layout from "@/layouts/Layout.astro"
+
+import LoginSection from "@/sections/LoginSection.astro"
+
 import Footer from "@/components/Footer.astro"
 import Header from "@/components/Header.astro"
 import Wave from "@/components/Wave.astro"
-import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout
 	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
 	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
 >
-	<Wave class="absolute right-0 -z-10 h-auto rotate-180" />
+	<Wave class="absolute left-0 -z-10 h-auto rotate-180" />
 	<Header />
 	<main>
-		<section class="flex content-center justify-center">
-			<CardLogin />
-		</section>
+		<LoginSection />
 	</main>
 	<Footer />
 </Layout>
