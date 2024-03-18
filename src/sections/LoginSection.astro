@@ -1,0 +1,15 @@
+---
+import LogInForm from "@/components/LogInForm.svelte"
+---
+
+<section class="my-32 flex items-end justify-center">
+	<div class="border border-orange-500 bg-white p-8 shadow-md">
+		<LogInForm client:idle />
+	</div>
+
+	<img
+		src="/img/person-walk.svg"
+		alt="Ilustración de una persona agarrando la tarjeta de login"
+		class="hidden lg:block"
+	/>
+</section>

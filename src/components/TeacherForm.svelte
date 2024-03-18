@@ -1,13 +1,13 @@
 <script>
-	import Input from "@/components/Input.svelte"
-	import Title from "@/components/Title.svelte"
-	// import SelectInput from "@/components/SelectInput.svelte"
+	import Input from "./Input.svelte"
+	import Title from "./Title.svelte"
 
 	const errors = {
-		userNameError: "",
-		emailError: "",
-		passwordError: "",
-		confirmPasswordError: "",
+		userName: "",
+		email: "",
+		password: "",
+		confirmPassword: "",
+		server: "",
 	}
 
 	async function handleUserSignUp(e) {
@@ -16,42 +16,57 @@
 		const { userName, email, password, confirmPassword, role } = e.target.elements
 
 		const data = {
-			userName: userName.value,
-			email: email.value,
-			password: password.value,
-			confirmPasswd: confirmPassword.value,
-			role: role.value,
+			userName: userName.value.trim(),
+			email: email.value.trim(),
+			password: password.value.trim(),
+			confirmPasswd: confirmPassword.value.trim(),
+			role: role.value.trim(),
 		}
 
 		if (data.userName === "") {
-			errors.userNameError = "El nombre es requerido"
+			errors.userName = "El nombre es requerido"
 			return
-		} else errors.userNameError = ""
+		} else errors.userName = ""
 
 		if (data.userName.length < 3) {
-			errors.userNameError = "El nombre debe ser de al menos 3 caracteres"
+			errors.userName = "El nombre debe ser de al menos 3 caracteres"
 			return
 		}
 
 		if (data.email === "") {
-			errors.emailError = "Este email es requerido"
+			errors.email = "Este email es requerido"
 			return
-		} else errors.emailError = ""
+		} else errors.email = ""
 
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 		if (!emailRegex.test(data.email)) {
-			errors.emailError = "El correo no es válido"
+			errors.email = "El correo no es válido"
 			return
 		}
 
 		if (data.password === "") {
-			errors.passwordError = "La contraseña es requerida"
+			errors.password = "La contraseña es requerida"
 			return
-		} else errors.passwordError = ""
+		} else errors.password = ""
 
 		if (data.password.length < 8) {
-			errors.passwordError = "La contraseña debe ser de al menos 8 caracteres"
+			errors.password = "La contraseña debe ser de al menos 8 caracteres"
 			return
+		}
+
+		if (data.password !== data.confirmPasswd) {
+			errors.confirmPassword = "Las contraseñas no coinciden"
+			return
+		} else errors.confirmPassword = ""
+
+		if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+			const localRole = localStorage.getItem("role")
+			if (localRole !== data.role) {
+				console.log(
+					"¡Atención! 🛑 ¡Este sistema está protegido por una muralla impenetrable! Los hackers encontrarán solo puertas cerradas. 🚪🔒 #SeguridadTotal"
+				)
+				return
+			}
 		}
 
 		const formData = new FormData()
@@ -67,13 +82,18 @@
 
 		if (!res.ok) {
 			const error = await res.json()
-			errors.serverError = error.message
+			errors.server = error.message
 			return
 		}
 
 		const result = await res.json()
-		console.log(result)
-		// redirigir a la página de inicio
+
+		if (result?.error) {
+			errors.server = result.error
+			return
+		}
+
+		window.location.href = "/login"
 	}
 </script>
 
@@ -87,43 +107,47 @@
 		<Title title="Registro profesor" />
 		<h2 class="text-lm flex justify-center font-sans font-bold">
 			¿Ya tienes cuenta?
-			<a href="/login" class=" ml-1 underline text-orange-500">Inicia sesión</a>
+			<a href="/login" class="ml-1 underline text-orange-500">Inicia sesión</a>
 		</h2>
 	</div>
+	{#if errors.server}
+		<div class="mb-4 rounded-lg bg-yellow-50 p-4 text-sm text-yellow-800" role="alert">
+			<span class="font-medium">{errors.server}</span>
+		</div>
+	{/if}
 	<div class="relative flex justify-center w-80">
 		<Input type="text" id="userName" content="Nombre:" />
 	</div>
-	{#if errors.userNameError}
+	{#if errors.userName}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-			<span class="font-medium">{errors.userNameError}</span>
+			<span class="font-medium">{errors.userName}</span>
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
 		<Input type="email" id="email" content="Correo:" />
 	</div>
-	{#if errors.emailError}
+	{#if errors.email}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-			<span class="font-medium">{errors.emailError}</span>
+			<span class="font-medium">{errors.email}</span>
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
 		<Input type="password" id="password" content="Contraseña:" />
 	</div>
-	{#if errors.passwordError}
+	{#if errors.password}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-			<span class="font-medium">{errors.passwordError}</span>
+			<span class="font-medium">{errors.password}</span>
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
 		<Input type="password" id="confirmPassword" content="Confirmar contraseña:" />
 	</div>
-	{#if errors.confirmPasswordError}
+	{#if errors.confirmPassword}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-			<span class="font-medium">{errors.confirmPasswordError}</span>
+			<span class="font-medium">{errors.confirmPassword}</span>
 		</div>
 	{/if}
 	<Input type="hidden" id="role" value="1" />
-	<!-- <SelectInput /> -->
 	<input
 		type="submit"
 		value="Registrarse"

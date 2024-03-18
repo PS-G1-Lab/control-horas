@@ -1,15 +1,23 @@
 <script>
-	export let { type, id, content, placeholder, value } = {
+	export let { type, id, content, placeholder, value, required } = {
 		type: "text",
 		id: "input",
 		content: "",
 		placeholder: " ",
 		value: "",
+		required: "false",
 	}
 </script>
 
 <div class="relative">
-	<input {type} {id} {value} class="border-b-2 border-solid border-black" {placeholder} />
+	<input
+		{type}
+		{id}
+		{value}
+		class="border-b-2 border-solid border-black"
+		{placeholder}
+		{required}
+	/>
 	{#if content !== ""}
 		<label for={id}>{content}</label>
 	{/if}
