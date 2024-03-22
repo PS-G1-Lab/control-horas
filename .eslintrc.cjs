@@ -1,9 +1,13 @@
-process.env.ESLINT_TSCONFIG = "tsconfig.json";
+process.env.ESLINT_TSCONFIG = "tsconfig.json"
 
 /**
  * @type {import("eslint").Linter.Config}
  */
 module.exports = {
+	globals: {
+		NodeJS: true,
+		NodeListOf: true,
+	},
 	env: {
 		es2022: true,
 		node: true,
@@ -18,8 +22,8 @@ module.exports = {
 	rules: {
 		"eol-last": "off",
 		"jsx-quotes": ["warn", "prefer-double"],
-		quotes: ["warn", "double"],
-		semi: ["warn", "never"],
+		"quotes": ["warn", "double"],
+		"semi": ["warn", "never"],
 		"@stylistic/js/no-tabs": "off",
 		"@stylistic/ts/indent": "off",
 		"no-constant-binary-expression": "warn",
@@ -56,10 +60,7 @@ module.exports = {
 				parser: "@typescript-eslint/parser",
 				extraFileExtensions: [".astro"],
 			},
-			extends: [
-				"plugin:astro/recommended",
-				"plugin:astro/jsx-a11y-recommended",
-			],
+			extends: ["plugin:astro/recommended", "plugin:astro/jsx-a11y-recommended"],
 			rules: {
 				"astro/no-conflict-set-directives": "warn",
 				"astro/no-unused-define-vars-in-style": "warn",
@@ -77,4 +78,4 @@ module.exports = {
 			parser: "@typescript-eslint/parser",
 		},
 	],
-};
+}
