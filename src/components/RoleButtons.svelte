@@ -28,32 +28,30 @@
 		classTeacher = classButtons.active
 	}
 
-	function handleRoleChangeToStudent(e) {
-		setAppStatusStudent()
-		classStudent = classButtons.active
-		classTeacher = classButtons.inactive
-		localStorage.setItem("role", $appStatus)
-	}
-
-	function handleRoleChangeToTeacher(e) {
-		setAppStatusTeacher()
-		classStudent = classButtons.inactive
-		classTeacher = classButtons.active
-		localStorage.setItem("role", $appStatus)
+	function handleRoleChange(role) {
+		if (role === 0) {
+			return () => {
+				setAppStatusStudent()
+				classStudent = classButtons.active
+				classTeacher = classButtons.inactive
+				localStorage.setItem("role", ROLE_STATUS.STUDENT)
+			}
+		} else {
+			return () => {
+				setAppStatusTeacher()
+				classStudent = classButtons.inactive
+				classTeacher = classButtons.active
+				localStorage.setItem("role", ROLE_STATUS.TEACHER)
+			}
+		}
 	}
 </script>
 
 <div class="flex gap-4 lg:gap-8 justify-center text-3xl lg:text-4xl">
-	<button
-		type="button"
-		class={classStudent}
-		data-role="STUDENT"
-		on:click={handleRoleChangeToStudent}>Estudiante</button
+	<button type="button" class={classStudent} data-role="STUDENT" on:click={handleRoleChange(0)}
+		>Estudiante</button
 	>
-	<button
-		type="button"
-		class={classTeacher}
-		data-role="TEACHER"
-		on:click={handleRoleChangeToTeacher}>Profesor</button
+	<button type="button" class={classTeacher} data-role="TEACHER" on:click={handleRoleChange(1)}
+		>Profesor</button
 	>
 </div>
