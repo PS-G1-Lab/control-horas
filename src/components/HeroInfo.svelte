@@ -20,17 +20,13 @@
 			href="/signup"
 			class="text-white bg-primary py-2 px-4 rounded-md flex items-center justify-center gap-3"
 			>Comenzar <img
-				src="/public/icons/rightArrow.svg"
+				src="icons/rightArrow.svg"
 				alt="Flecha apuntando hacia la derecha"
 				class="w-4 h-auto"
 			/></a
 		>
 		<a href="/faqs" aria-label="Enlace que te lleva a la página de preguntas frecuentes"
-			><img
-				src="/public/icons/questionMark.svg"
-				alt="Cierre de interrogación"
-				class="w-8 h-auto"
-			/></a
+			><img src="icons/questionMark.svg" alt="Cierre de interrogación" class="w-8 h-auto" /></a
 		>
 	</div>
 </div>
