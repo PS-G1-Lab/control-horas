@@ -1,5 +1,6 @@
 ---
 import Logo from "@/icons/Logo.astro"
+import Spain from "@/icons/Spain.astro"
 ---
 
 <header
@@ -77,6 +78,19 @@ import Logo from "@/icons/Logo.astro"
 				>
 			</li>
 		</ul>
+		<div class="container mx-auto">
+			<select id="language-select" class="mt-2 rounded-md border">
+				<option value="espanol">
+					<Spain />
+				</option>
+				<option value="ingles">
+					<img src="/img/uk-flag.png" alt="Inglés" class="mr-2 inline-block h-3 w-4" />
+				</option>
+				<option value="italiano">
+					<img src="/img/italy-flag.png" alt="Italiano" class="mr-2 inline-block h-3 w-4" />
+				</option>
+			</select>
+		</div>
 	</nav>
 </header>
 

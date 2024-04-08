@@ -2,6 +2,9 @@
 import Instagram from "@/icons/Instagram.astro"
 import Tiktok from "@/icons/Tiktok.astro"
 import XTwitter from "@/icons/X-twitter.astro"
+import Spain from "@/icons/Spain.astro"
+import England from "@/icons/England.astro"
+import Italy from "@/icons/Italy.astro"
 ---
 
 <footer class="bg-secondary py-8 text-white">
@@ -93,6 +96,20 @@ import XTwitter from "@/icons/X-twitter.astro"
 				>
 			</div>
 			<p class="mt-2 text-base lg:text-lg">Contáctanos si necesitas asistencia</p>
+
+			<div class="container">
+				<div class="mx-auto mt-2 flex">
+					<button value="espanol" onclick="selectLanguage('espanol')" class="mr-2">
+						<Spain />
+					</button>
+					<button value="espanol" onclick="selectLanguage('espanol')" class="mr-2">
+						<England />
+					</button>
+					<button value="espanol" onclick="selectLanguage('espanol')" class="mr-2">
+						<Italy />
+					</button>
+				</div>
+			</div>
 		</article>
 	</section>
 </footer>
