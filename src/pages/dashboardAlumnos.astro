@@ -1,0 +1,46 @@
+---
+import AlterHeader from "@/components/AlterHeader.astro"
+import Border from "@/components/Border.astro"
+import Footer from "@/components/Footer.astro"
+import TextSidebar from "@/components/TextSidebar.astro"
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
+>
+	<AlterHeader />
+
+	<section class="mt-3 flex">
+		<div class="w-2/5 p-4">
+			<h3 class="mr-4 text-base font-bold">Ámbito:</h3>
+			<TextSidebar content="Informática" />
+			<TextSidebar content="Ciencias" />
+			<TextSidebar content="Literatura" />
+			<TextSidebar content="Ingeniería" />
+			<TextSidebar content="Matemáticas" />
+			<p class="mb-4 mr-4 font-bold">10 más</p>
+			<hr class="flex-grow border-b border-black" />
+			<h3 class="mr-4 mt-4 text-base font-bold">Días:</h3>
+			<TextSidebar content="Lunes" />
+			<TextSidebar content="Martes" />
+			<TextSidebar content="Miércoles" />
+			<TextSidebar content="Jueves" />
+			<TextSidebar content="Viernes" />
+		</div>
+
+		<div class="w-full p-4">
+			<div class="my-8 flex items-center">
+				<h2 class="mr-4 text-xl font-bold">Resultado de su búsqueda:</h2>
+				<hr class="flex-grow border-b border-black" />
+			</div>
+
+			<section>
+				<Border content="hola" />
+			</section>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
