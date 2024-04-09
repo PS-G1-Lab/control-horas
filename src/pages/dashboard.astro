@@ -26,9 +26,9 @@ if (!Astro.cookies.has("session")) {
 	<body class="bg-gray-100">
 		<AlterHeader />
 		<Wave class="absolute right-0 -z-10 h-auto" />
-		<section class="container mx-auto mb-16 mt-[90px] p-4">
-			<div class="grid grid-cols-2 gap-4">
-				<div class="mb-8 flex items-center justify-center rounded border">
+		<main class="container mx-auto mb-16 mt-24 p-4">
+			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+				<section class="mb-8 items-center justify-center rounded border">
 					<div class="text-center">
 						<p class="my-4 text-lg font-semibold">¡Crea tu Clase!</p>
 						<a
@@ -37,18 +37,18 @@ if (!Astro.cookies.has("session")) {
 							>Crear Clases</a
 						>
 					</div>
-				</div>
-				<div class="mb-8 flex items-center justify-center rounded border">
+				</section>
+				<section class="mb-8 items-center justify-center rounded border">
 					<div class="text-center">
 						<p class="my-4 text-lg font-semibold">¡Actualiza tu Información!</p>
 						<a
 							href="/profile"
-							class="btn-primary btn-primary mb-8 inline-block w-56 rounded-full bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600"
+							class="btn-primary btn-primary [400px]:w-auto mb-8 inline-block w-56 rounded-full bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600"
 							>Actualizar</a
 						>
 					</div>
-				</div>
-				<div class="mb-8 flex items-center justify-center rounded border">
+				</section>
+				<section class="mb-8 items-center justify-center rounded border">
 					<div class="text-center">
 						<p class="my-4 text-lg font-semibold">¡Cambia tu Contraseña!</p>
 						<a
@@ -57,15 +57,15 @@ if (!Astro.cookies.has("session")) {
 							>Cambiar</a
 						>
 					</div>
-				</div>
-				<div class="mb-8 flex items-center justify-center rounded border bg-gray-200">
+				</section>
+				<section class="mb-8 items-center justify-center rounded border bg-gray-200 pb-8">
 					<div class="text-center">
 						<p class="my-4 text-lg font-semibold">Otras Opciones</p>
 						<Button content="Opciones" disable={true} />
 					</div>
-				</div>
+				</section>
 			</div>
-		</section>
+		</main>
 	</body>
 	<Footer />
 </Layout>

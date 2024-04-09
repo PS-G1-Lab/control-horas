@@ -10,7 +10,10 @@ export default {
 				twitch: "var(--color-twitch)",
 				ice: "var(--color-twitch-ice)",
 			},
+			screens: {
+				mobile: "440px",
+			},
 		},
 	},
 	plugins: [],
-};
+}
