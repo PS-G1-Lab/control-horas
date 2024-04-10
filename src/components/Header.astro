@@ -1,6 +1,5 @@
 ---
 import Logo from "@/icons/Logo.astro"
-import Spain from "@/icons/Spain.astro"
 ---
 
 <header
@@ -78,18 +77,59 @@ import Spain from "@/icons/Spain.astro"
 				>
 			</li>
 		</ul>
-		<div class="container mx-auto">
-			<select id="language-select" class="mt-2 rounded-md border">
-				<option value="espanol">
-					<Spain />
-				</option>
-				<option value="ingles">
-					<img src="/img/uk-flag.png" alt="Inglés" class="mr-2 inline-block h-3 w-4" />
-				</option>
-				<option value="italiano">
-					<img src="/img/italy-flag.png" alt="Italiano" class="mr-2 inline-block h-3 w-4" />
-				</option>
-			</select>
+		<div class="container mx-auto ml-12">
+			<div class="relative inline-block text-left">
+				<button
+					class="inline-flex w-full justify-center rounded-md px-4 py-2 font-medium hover:bg-neutral-100"
+					id="lang-menu"
+					aria-haspopup="true"
+					aria-expanded="true"
+				>
+					Idiomas
+					<!-- Heroicon name: chevron-down -->
+					<svg
+						class="-mr-1 ml-2 h-5 w-5"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+						aria-hidden="true"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M5 7a1 1 0 011.707-.707l3.586 3.586a1 1 0 010 1.414l-3.586 3.586A1 1 0 015 14V7z"
+							clip-rule="evenodd"></path>
+					</svg>
+				</button>
+
+				<div
+					class="absolute right-0 mt-2 hidden w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+					id="lang-content"
+				>
+					<div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+						<a
+							href="/home"
+							data-value="espanol"
+							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+							role="menuitem"
+							><img src="flags/spain.svg" alt="Spain Flag" class="mr-2 inline-block" /> Español</a
+						>
+						<a
+							href="/home"
+							data-value="ingles"
+							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+							role="menuitem"
+							><img src="flags/united-kingdom.svg" alt="England Flag" class="mr-2 inline-block" /> English</a
+						>
+						<a
+							href="/home"
+							data-value="italiano"
+							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+							role="menuitem"
+							><img src="flags/italy.svg" alt="Italy Flag" class="mr-2 inline-block" /> Italiano</a
+						>
+					</div>
+				</div>
+			</div>
 		</div>
 	</nav>
 </header>
@@ -99,5 +139,10 @@ import Spain from "@/icons/Spain.astro"
 	const mobileMenuContent = document.querySelector("#mobile-menu")
 	mobileMenu.addEventListener("click", () => {
 		mobileMenuContent.classList.toggle("hidden")
+	})
+	const langMenu = document.querySelector("#lang-menu")
+	const langMenuContent = document.querySelector("#lang-content")
+	langMenu.addEventListener("click", () => {
+		langMenuContent.classList.toggle("hidden")
 	})
 </script>
