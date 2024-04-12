@@ -1,11 +1,29 @@
 ---
 interface Props {
-	content: string
+	title: string
+	dias: string
+	ambito: string
+	horario: string
+	teacher: string
+	precio: string
 }
 
-const { content } = Astro.props
+const { title, dias, ambito, horario, teacher, precio } = Astro.props
 ---
 
-<p class="w-full flex-col items-center justify-center gap-4 rounded border border-black p-8">
-	{content}
-</p>
+<div
+	class="mx-auto my-8 flex w-full items-center justify-center gap-4 rounded border border-black p-8"
+>
+	<div class="flex-1 font-bold">
+		<p class="text-lg">{title}</p>
+		<p>Días: {dias}</p>
+	</div>
+	<div class="flex-1 font-bold">
+		<p>Ámbito: {ambito}</p>
+		<p>Horario: {horario}</p>
+	</div>
+	<div class="flex-1 font-bold">
+		<p>Impartida por: {teacher}</p>
+		<p>Precio: {precio}</p>
+	</div>
+</div>
