@@ -23,10 +23,14 @@ import Layout from "@/layouts/Layout.astro"
 		</div>
 
 		<!-- Contenido del Menú (Ámbito) -->
-		<section id="menuSection" class="mb-3 hidden w-1/5 border-r border-black p-4 md:block lg:block">
+		<aside
+			id="menuSection"
+			class="absolute mb-3 hidden w-1/2 border-r border-black bg-white p-4 md:block lg:relative lg:block lg:w-1/5"
+		>
 			<!-- Contenido del Menú -->
 			<div class="mb-4">
 				<h3 class="mt-10 text-base font-bold">Ámbito:</h3>
+				<!-- To do bd -->
 				<div class="space-y-2">
 					<TextSidebar content="Informática" />
 					<TextSidebar content="Ciencias" />
@@ -60,6 +64,7 @@ import Layout from "@/layouts/Layout.astro"
 
 					<!-- Contenido desplegable -->
 					<div id="dropdownContent" class="mt-2 hidden w-full space-y-2">
+						<!-- To do bd -->
 						<TextSidebar content="Inglés" />
 						<TextSidebar content="Música" />
 						<TextSidebar content="Física" />
@@ -88,7 +93,7 @@ import Layout from "@/layouts/Layout.astro"
 					<QuestionMark />
 				</a>
 			</div>
-		</section>
+		</aside>
 
 		<!-- Contenido Principal -->
 		<section class="w-full p-4">
@@ -96,6 +101,7 @@ import Layout from "@/layouts/Layout.astro"
 				<h2 class="mb-4 text-base font-bold md:text-2xl lg:text-2xl">Resultado de su búsqueda:</h2>
 				<div class="scroll-container hidden overflow-x-hidden overflow-y-scroll lg:block">
 					<hr class="mb-8 w-full border-b border-black" />
+					<!-- To do bd -->
 					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
 					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
 					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
@@ -112,7 +118,7 @@ import Layout from "@/layouts/Layout.astro"
 					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
 					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
 					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
-					<div class="mb-7 ml-7 mr-7 flex w-full justify-end">
+					<div class="mb-7 flex w-full justify-end">
 						<Button content="Inscribirse" disable={false} />
 					</div>
 				</div>
