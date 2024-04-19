@@ -106,27 +106,30 @@ import Logo from "@/icons/Logo.astro"
 					id="lang-content"
 				>
 					<div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-						<a
-							href="/home"
-							data-value="espanol"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+						<button
+							data-value="es"
+							:click="translate(this.getAttribute('data-value'))"
+							class="language block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
 							role="menuitem"
-							><img src="flags/spain.svg" alt="Spain Flag" class="mr-2 inline-block" /> Español</a
 						>
-						<a
-							href="/home"
-							data-value="ingles"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+							<img src="flags/spain.svg" alt="Spain Flag" class="mr-2 inline-block" /> Español
+						</button>
+						<button
+							data-value="en"
+							:click="translate(this.getAttribute('data-value'))"
+							class="language block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
 							role="menuitem"
-							><img src="flags/united-kingdom.svg" alt="England Flag" class="mr-2 inline-block" /> English</a
 						>
-						<a
-							href="/home"
-							data-value="italiano"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+							<img src="flags/united-kingdom.svg" alt="England Flag" class="mr-2 inline-block" /> English
+						</button>
+						<button
+							data-value="it"
+							:click="translate(this.getAttribute('data-value'))"
+							class="language block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
 							role="menuitem"
-							><img src="flags/italy.svg" alt="Italy Flag" class="mr-2 inline-block" /> Italiano</a
 						>
+							<img src="flags/italy.svg" alt="Italy Flag" class="mr-2 inline-block" /> Italiano
+						</button>
 					</div>
 				</div>
 			</div>
@@ -135,6 +138,14 @@ import Logo from "@/icons/Logo.astro"
 </header>
 
 <script>
+	import translateWebsite from "@/pages/api/translation/translateWebsite.js"
+
+	function translate(language) {
+		translateWebsite(window.location.href, "es", language).then((translatedHtml) => {
+			document.documentElement.innerHTML = translatedHtml
+		})
+	}
+
 	const mobileMenu = document.querySelector("[data-collapse-toggle='mobile-menu']")
 	const mobileMenuContent = document.querySelector("#mobile-menu")
 	mobileMenu.addEventListener("click", () => {
