@@ -1,0 +1,76 @@
+---
+import AlterHeader from "@/components/AlterHeader.astro"
+import Border from "@/components/BorderTeacher.astro"
+import Button from "@/components/Button.astro"
+import Footer from "@/components/Footer.astro"
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
+>
+	<AlterHeader />
+
+	<section class="relative mt-3 flex">
+		<!-- Contenido Principal -->
+		<section class="w-full p-4">
+			<div class="my-8">
+				<h2 class="mb-4 ml-5 text-base font-bold md:text-2xl lg:text-2xl">Clases creadas:</h2>
+				<div class="scroll-container hidden overflow-x-hidden overflow-y-scroll lg:block">
+					<hr class="mb-8 w-full border-b border-black" />
+					<!-- To do bd -->
+					<Border title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+					<Border title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+					<Border title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+					<Border title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+					<Border title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+
+					<div class="mb-7 flex w-full justify-end">
+						<Button content="Anular clase" disable={false} />
+						<Button content="Editar clase" disable={false} />
+						<Button content="Crear clase" disable={false} />
+					</div>
+				</div>
+				<div class="sm:block lg:hidden">
+					<hr class="mb-8 w-full border-b border-black" />
+					<Border title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+					<Border title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+					<Border title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+					<Border title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+					<div class="mb-7 flex flex-col items-end gap-y-3">
+						<Button content="Anular clase" disable={false} />
+						<Button content="Editar clase" disable={false} />
+						<Button content="Crear clase" disable={false} />
+					</div>
+				</div>
+			</div>
+		</section>
+	</section>
+
+	<Footer />
+	<style>
+		.scroll-container {
+			max-height: 80vh;
+			overflow-y: auto;
+			margin-right: 80px;
+			overflow-x: hidden;
+		}
+
+		.scroll-container::-webkit-scrollbar {
+			width: 15px;
+		}
+
+		.scroll-container::-webkit-scrollbar-track {
+			background: white;
+		}
+
+		.scroll-container::-webkit-scrollbar-thumb {
+			background-color: #d9d9d9;
+		}
+
+		.scroll-container::-webkit-scrollbar-thumb:hover {
+			background-color: var(--color-secondary);
+		}
+	</style>
+</Layout>
