@@ -77,60 +77,25 @@ import Logo from "@/icons/Logo.astro"
 				>
 			</li>
 		</ul>
-		<div class="container mx-auto ml-12">
-			<div class="relative inline-block text-left">
+		<div class="col-sm">
+			<div
+				id="language"
+				class="btn-group dropright align-center ml-auto mt-12 w-1/2 text-center font-medium"
+			>
 				<button
-					class="inline-flex w-full justify-center rounded-md px-4 py-2 font-medium hover:bg-neutral-100"
-					id="lang-menu"
+					id="langSel"
+					type="button"
+					class="btn btn-success dropdown-toggle"
+					data-toggle="dropdown"
 					aria-haspopup="true"
-					aria-expanded="true"
+					aria-expanded="false"
 				>
 					Idiomas
-					<!-- Heroicon name: chevron-down -->
-					<svg
-						class="-mr-1 ml-2 h-5 w-5"
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 20 20"
-						fill="currentColor"
-						aria-hidden="true"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M5 7a1 1 0 011.707-.707l3.586 3.586a1 1 0 010 1.414l-3.586 3.586A1 1 0 015 14V7z"
-							clip-rule="evenodd"></path>
-					</svg>
 				</button>
-
-				<div
-					class="absolute right-0 mt-2 hidden w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
-					id="lang-content"
-				>
-					<div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-						<button
-							data-value="es"
-							:click="translate(this.getAttribute('data-value'))"
-							class="language block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-							role="menuitem"
-						>
-							<img src="flags/spain.svg" alt="Spain Flag" class="mr-2 inline-block" /> Español
-						</button>
-						<button
-							data-value="en"
-							:click="translate(this.getAttribute('data-value'))"
-							class="language block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-							role="menuitem"
-						>
-							<img src="flags/united-kingdom.svg" alt="England Flag" class="mr-2 inline-block" /> English
-						</button>
-						<button
-							data-value="it"
-							:click="translate(this.getAttribute('data-value'))"
-							class="language block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-							role="menuitem"
-						>
-							<img src="flags/italy.svg" alt="Italy Flag" class="mr-2 inline-block" /> Italiano
-						</button>
-					</div>
+				<div id="dropdown-menu" class="dropdown-menu hidden">
+					<a class="dropdown-item" href="/" id="es">Español</a>
+					<a class="dropdown-item" href="/" id="fr">Français</a>
+					<a class="dropdown-item" href="/" id="de">Deutsch</a>
 				</div>
 			</div>
 		</div>
@@ -138,22 +103,23 @@ import Logo from "@/icons/Logo.astro"
 </header>
 
 <script>
-	import translateWebsite from "@/pages/api/translation/translateWebsite.js"
-
-	function translate(language) {
-		translateWebsite(window.location.href, "es", language).then((translatedHtml) => {
-			document.documentElement.innerHTML = translatedHtml
-		})
-	}
-
 	const mobileMenu = document.querySelector("[data-collapse-toggle='mobile-menu']")
 	const mobileMenuContent = document.querySelector("#mobile-menu")
 	mobileMenu.addEventListener("click", () => {
 		mobileMenuContent.classList.toggle("hidden")
 	})
-	const langMenu = document.querySelector("#lang-menu")
-	const langMenuContent = document.querySelector("#lang-content")
+	const langMenu = document.querySelector("#language")
+	const langMenuContent = document.querySelector("#dropdown-menu")
 	langMenu.addEventListener("click", () => {
 		langMenuContent.classList.toggle("hidden")
+	})
+	document.addEventListener("DOMContentLoaded", function () {
+		const dropdownItems = document.querySelectorAll(".dropdown-item")
+
+		dropdownItems.forEach(function (dropdownItem) {
+			dropdownItem.addEventListener("click", function (e) {
+				e.preventDefault()
+			})
+		})
 	})
 </script>
