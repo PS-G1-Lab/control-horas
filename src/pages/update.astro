@@ -6,6 +6,10 @@ import Textbox from "@/components/Textbox.astro"
 import Textpassword from "@/components/Textpassword.astro"
 import Wave from "@/components/Wave.astro"
 import Layout from "@/layouts/Layout.astro"
+
+if (!Astro.cookies.has("session")) {
+	return Astro.redirect("/login")
+}
 ---
 
 <Layout

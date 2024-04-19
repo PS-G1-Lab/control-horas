@@ -1,5 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro"
+
+if (!Astro.cookies.has("session")) {
+	return Astro.redirect("/login")
+}
 ---
 
 <Layout

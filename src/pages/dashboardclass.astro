@@ -6,6 +6,10 @@ import Footer from "@/components/Footer.astro"
 import TextSidebar from "@/components/TextSidebar.astro"
 import QuestionMark from "@/icons/QuestionMark.svelte"
 import Layout from "@/layouts/Layout.astro"
+
+if (!Astro.cookies.has("session")) {
+	return Astro.redirect("/login")
+}
 ---
 
 <Layout
