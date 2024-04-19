@@ -1,0 +1,176 @@
+---
+import AlterHeader from "@/components/AlterHeader.astro"
+import Border from "@/components/Border.astro"
+import Button from "@/components/Button.astro"
+import Footer from "@/components/Footer.astro"
+import TextSidebar from "@/components/TextSidebar.astro"
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
+>
+	<AlterHeader />
+
+	<section class="relative mt-3 flex">
+		<!-- Menú Hamburguesa para Dispositivos Móviles -->
+		<div class="absolute left-0 top-0 z-50 sm:hidden">
+			<button id="mobileMenuBtn" class="cursor-pointer p-4 text-2xl focus:outline-none">
+				&#9776;
+			</button>
+		</div>
+
+		<!-- Contenido del Menú (Ámbito) -->
+		<aside
+			id="menuSection"
+			class="absolute mb-3 hidden w-1/2 border-r border-black bg-white p-4 md:block lg:relative lg:block lg:w-1/5"
+		>
+			<!-- Contenido del Menú -->
+			<div class="mb-4">
+				<h3 class="mt-10 text-base font-bold">Ámbito:</h3>
+				<!-- To do bd -->
+				<div class="space-y-2">
+					<TextSidebar content="Informática" />
+					<TextSidebar content="Ciencias" />
+					<TextSidebar content="Literatura" />
+					<TextSidebar content="Ingeniería" />
+					<TextSidebar content="Matemáticas" />
+				</div>
+
+				<!-- Contenido desplegable -->
+				<div class="relative mt-4">
+					<button
+						id="dropdownBtn"
+						class="flex cursor-pointer items-center font-bold focus:outline-none"
+					>
+						<span>10 más</span>
+						<svg
+							id="dropdownIcon"
+							xmlns="http://www.w3.org/2000/svg"
+							class="ml-1 inline-block h-5 w-5 transform transition-transform duration-200"
+							fill="none"
+							viewBox="0 0 20 20"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M7 10l5 5 5-5"></path>
+						</svg>
+					</button>
+
+					<!-- Contenido desplegable -->
+					<div id="dropdownContent" class="mt-2 hidden w-full space-y-2">
+						<!-- To do bd -->
+						<TextSidebar content="Inglés" />
+						<TextSidebar content="Música" />
+						<TextSidebar content="Física" />
+						<TextSidebar content="Francés" />
+						<TextSidebar content="Latín" />
+						<TextSidebar content="Biología" />
+						<TextSidebar content="Anatomía" />
+						<TextSidebar content="Italiano" />
+						<TextSidebar content="Filosofía" />
+						<TextSidebar content="Economía" />
+					</div>
+				</div>
+			</div>
+
+			<hr class="flex-grow border-b border-black" />
+			<div class="mt-4 space-y-2">
+				<h3 class="text-base font-bold">Días:</h3>
+				<TextSidebar content="Lunes" />
+				<TextSidebar content="Martes" />
+				<TextSidebar content="Miércoles" />
+				<TextSidebar content="Jueves" />
+				<TextSidebar content="Viernes" />
+			</div>
+		</aside>
+
+		<!-- Contenido Principal -->
+		<section class="w-full p-4">
+			<div class="my-8">
+				<h2 class="mb-4 text-base font-bold md:text-2xl lg:text-2xl">Resultado de su búsqueda:</h2>
+				<div class="scroll-container hidden overflow-x-hidden overflow-y-scroll lg:block">
+					<hr class="mb-8 w-full border-b border-black" />
+					<!-- To do bd -->
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<div class="mb-7 ml-7 mr-7 flex w-full justify-end">
+						<Button content="Inscribirse" disable={false} />
+					</div>
+				</div>
+				<div class="sm:block lg:hidden">
+					<hr class="mb-8 w-full border-b border-black" />
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<Border title="" dias="" ambito="" horario="" teacher="" precio="" />
+					<div class="mb-7 flex w-full justify-end">
+						<Button content="Inscribirse" disable={false} />
+					</div>
+				</div>
+			</div>
+		</section>
+	</section>
+
+	<Footer />
+	<style>
+		.scroll-container {
+			max-height: 80vh;
+			overflow-y: auto;
+			margin-right: 80px;
+			overflow-x: hidden;
+		}
+
+		.scroll-container::-webkit-scrollbar {
+			width: 15px;
+		}
+
+		.scroll-container::-webkit-scrollbar-track {
+			background: white;
+		}
+
+		.scroll-container::-webkit-scrollbar-thumb {
+			background-color: #d9d9d9;
+		}
+
+		.scroll-container::-webkit-scrollbar-thumb:hover {
+			background-color: var(--color-secondary);
+		}
+	</style>
+</Layout>
+
+<script>
+	// Obtenemos referencias a los elementos del DOM
+	const dropdownBtn = document.getElementById("dropdownBtn")
+	const dropdownIcon = document.getElementById("dropdownIcon")
+	const dropdownContent = document.getElementById("dropdownContent")
+	const menuSection = document.getElementById("menuSection")
+	const mobileMenuBtn = document.getElementById("mobileMenuBtn")
+
+	let isOpen = false // Estado inicial del menú desplegable
+
+	// Función para alternar la visibilidad del contenido desplegable y rotar el ícono
+	function toggleDropdown() {
+		isOpen = !isOpen // Cambiamos el estado del menú desplegable
+		dropdownContent.classList.toggle("hidden") // Alternamos la clase 'hidden' para mostrar/ocultar el contenido
+		dropdownIcon.classList.toggle("rotate-180") // Rotamos el ícono de flecha (agregando o quitando la clase 'rotate-180')
+		dropdownContent.classList.toggle("width:100%")
+	}
+
+	// Función para mostrar u ocultar el menú en dispositivos móviles al hacer clic en el icono de hamburguesa
+	function toggleMobileMenu() {
+		menuSection.classList.toggle("hidden") // Alternamos la visibilidad del menú
+	}
+
+	// Agregamos event listeners a los botones para alternar el estado del contenido desplegable al hacer clic
+	dropdownBtn.addEventListener("click", toggleDropdown)
+	mobileMenuBtn.addEventListener("click", toggleMobileMenu)
+</script>
