@@ -1,0 +1,23 @@
+---
+interface Props {
+	title: string
+	dias: string
+	ambito: string
+	horaStart: string
+	horaFin: string
+	nAlumnos: string
+}
+
+const { title, dias, ambito, horaStart, horaFin, nAlumnos } = Astro.props
+---
+
+<div class="mx-auto my-8 w-full max-w-[1100px]">
+	<div class="grid grid-cols-1 gap-4 rounded border border-black p-4 sm:grid-cols-3 lg:grid-cols-3">
+		<p class="mb-2 text-lg font-bold">{title}</p>
+		<p><span class="font-bold">Días:</span> {dias}</p>
+		<p><span class="font-bold">Ámbito:</span> {ambito}</p>
+		<p><span class="font-bold">Hora de inicio:</span> {horaStart}</p>
+		<p><span class="font-bold">Hora de finalización:</span> {horaFin}</p>
+		<p><span class="font-bold">Alumnos inscritos:</span> {nAlumnos}</p>
+	</div>
+</div>
