@@ -14,9 +14,41 @@ import User from "@/icons/User.astro"
 	>
 		<Logo class="object-contain" />
 	</a>
-
-	<a href="/profile" class="flex h-min items-center justify-end">
-		<span class="font-semibold tracking-tight">Nombre X</span>
-		<User />
-	</a>
+	<div class="flex items-center justify-end gap-8">
+		<div
+			class="mx-3 rounded px-3 py-2 transition ease-in-out hover:bg-neutral-100 max-sm:mt-2 lg:mx-0"
+		>
+			<button
+				class="inline-flex justify-center"
+				id="lang-menu"
+				aria-haspopup="true"
+				aria-expanded="true"
+				onclick="googleTranslateElementInit()"
+			>
+				<img src="icons/translation.svg" alt="Icono de traducción" />
+			</button>
+			<div class="absolute mt-2 hidden" id="google_translate_element"></div>
+		</div>
+		<a href="/profile" class="flex h-min items-center justify-end">
+			<span class="font-semibold tracking-tight">Nombre X</span>
+			<User />
+		</a>
+	</div>
 </header>
+
+<script>
+	const langMenu = document.querySelector("#lang-menu")
+	const langMenuContent = document.querySelector("#google_translate_element")
+	langMenu.addEventListener("click", () => {
+		langMenuContent.classList.toggle("hidden")
+	})
+</script>
+
+<script
+	type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+	function googleTranslateElementInit() {
+		google.translate.TranslateElement({ pageLanguage: "es" }, "google_translate_element")
+	}
+</script>
