@@ -10,7 +10,7 @@ interface Props {
 const { who, opinion, stars } = Astro.props
 ---
 
-<article class="mb-8 w-96 rounded-lg border border-black px-8 py-8">
+<article class="mb-8 w-auto rounded-lg border border-black px-8 py-8 mobile:w-96">
 	<h1 class="mb-4 font-medium">{who}</h1>
 	<p>
 		{opinion}

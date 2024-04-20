@@ -15,14 +15,16 @@ import Layout from "@/layouts/Layout.astro"
 	>
 		<section class="my-3 mb-12 flex w-[580px] flex-col justify-center lg:w-1/2">
 			<div
-				class="mx-auto my-5 flex w-full items-center justify-center rounded-lg bg-primary text-white"
+				class="mx-auto my-5 flex w-full items-center justify-center rounded-lg bg-primary px-4 text-white"
 			>
-				<h1 class="mx-auto py-1 text-4xl">Creación de una nueva clase</h1>
+				<h1 class="mx-auto py-1 text-2xl mobile:text-3xl sm:text-4xl lg:text-3xl xl:text-4xl">
+					Creación de una nueva clase
+				</h1>
 			</div>
 			<form
 				action="/new_class"
 				method="post"
-				class="grid grid-cols-2 gap-4 rounded-lg border-[12px] border-solid border-gray-200 p-5"
+				class="grid grid-cols-2 gap-4 rounded-lg border-[10px] border-solid border-gray-200 p-4"
 			>
 				<div class="flex flex-col">
 					<label for="title" class="block">Titulo:</label>
