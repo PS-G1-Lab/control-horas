@@ -42,7 +42,8 @@
 		if (errors.server) return
 
 		// Create a session cokie to permit access to the dashboard
-		document.cookie = `session=${data.email}; path=/; max-age=3600; samesite=strict; secure`
+		document.cookie = `session=${result.sessionToken}; path=/; max-age=3600; samesite=strict; secure`
+    document.cookie = `user=${result.userId}; path=/; max-age=3600; samesite=strict; secure`
 
 		window.location.href = "/dashboard"
 	}

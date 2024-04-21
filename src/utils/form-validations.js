@@ -44,3 +44,39 @@ export function validateResult(result) {
 		return result.error
 	} else return ""
 }
+
+export function validateTitle(title) {
+	if (title === "") {
+		return "El título es requerido"
+	} else if (title.length < 3) {
+		return "El título debe ser de al menos 3 caracteres"
+	} else return ""
+}
+
+export function validateDate(date) {
+	if (date === "") {
+		return "La fecha es requerida"
+	} else return ""
+}
+
+export function validateHour(hour) {
+	if (hour === "") {
+		return "La hora es requerida"
+	} else return ""
+}
+
+export function validateDescription(description) {
+	if (description === "") {
+		return "La descripción es requerida"
+	} else if (description.length < 10) {
+		return "La descripción debe ser de al menos 10 caracteres"
+	} else return ""
+}
+
+export function validateSubject(title) {
+	if (title === "") {
+		return "La asignatura es requerida"
+	} else if (title.length < 3) {
+		return "La asignatura debe ser de al menos 3 caracteres"
+	} else return ""
+}
