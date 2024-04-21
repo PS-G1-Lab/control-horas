@@ -1,5 +1,6 @@
 <script>
 	import Input from "@/components/forms/Input.svelte"
+	import { validateEmail, validatePassword, validateResponse, validateResult } from "../../utils/form-validations"
 
 	const errors = {
 		email: "",
@@ -17,26 +18,11 @@
 			password: password.value.trim(),
 		}
 
-		if (data.email === "") {
-			errors.email = "Este email es requerido"
-			return
-		} else errors.email = ""
+		errors.email = validateEmail(data.email)
+		if (errors.email) return
 
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-		if (!emailRegex.test(data.email)) {
-			errors.email = "El correo no es válido"
-			return
-		}
-
-		if (data.password === "") {
-			errors.password = "La contraseña es requerida"
-			return
-		} else errors.password = ""
-
-		if (data.password.length < 8) {
-			errors.password = "La contraseña debe ser de al menos 8 caracteres"
-			return
-		}
+		errors.password = validatePassword(data.password)
+		if (errors.password) return
 
 		const formData = new FormData()
 		formData.append("email", data.email)
@@ -47,18 +33,13 @@
 			body: formData,
 		})
 
-		if (!res.ok) {
-			const error = await res.json()
-			errors.server = error.message
-			return
-		}
+		errors.server = validateResponse(res)
+		if (errors.server) return
 
 		const result = await res.json()
 
-		if (result?.error) {
-			errors.server = result.error
-			return
-		}
+		errors.server = validateResult(result)
+		if (errors.server) return
 
 		// Create a session cokie to permit access to the dashboard
 		document.cookie = `session=${data.email}; path=/; max-age=3600; samesite=strict; secure`
