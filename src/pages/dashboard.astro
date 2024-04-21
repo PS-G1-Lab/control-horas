@@ -5,8 +5,35 @@ import Footer from "@/components/Footer.astro"
 import Wave from "@/components/Wave.astro"
 import Layout from "@/layouts/Layout.astro"
 
-if (!Astro.cookies.has("session")) {
+if (!Astro.cookies.has("session") || !Astro.cookies.has("user")) {
 	return Astro.redirect("/login")
+}
+
+if (Astro.cookies.get("session") && Astro.cookies.get("user")) {
+	const sessionToken = Astro.cookies.get("session").value
+	const userId = Astro.cookies.get("user").value
+
+	const sessionData = {
+		sessionToken,
+		userId,
+	}
+
+	// console.log(sessionData)
+
+	// const res = await fetch("http://localhost:1234/user/checkSession", {
+	// 	method: "POST",
+	// 	body: JSON.stringify(sessionData),
+	// })
+	// 	.then((response) => response.json())
+	// 	.catch((err) => console.error(err))
+
+	// console.log(res)
+
+	// if (data.error) {
+	// 	Astro.cookies.delete("session")
+	// 	Astro.cookies.delete("user")
+	// 	return Astro.redirect("/login")
+	// }
 }
 ---
 
@@ -14,58 +41,47 @@ if (!Astro.cookies.has("session")) {
 	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
 	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
 >
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Panel de Administración</title>
-		<link
-			href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-			rel="stylesheet"
-		/>
-	</head>
-	<body class="bg-gray-100">
-		<AlterHeader />
-		<Wave class="absolute right-0 -z-10 h-auto" />
-		<main class="container mx-auto mb-16 mt-24 p-4">
-			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-				<section class="mb-8 items-center justify-center rounded border">
-					<div class="text-center">
-						<p class="my-4 text-lg font-semibold">Listado de Clases Creadas</p>
-						<a
-							href="/dashboardteacher"
-							class="btn-primary btn-primary mb-8 inline-block w-56 rounded-full bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600"
-							>Clases Creadas</a
-						>
-					</div>
-				</section>
-				<section class="mb-8 items-center justify-center rounded border">
-					<div class="text-center">
-						<p class="my-4 text-lg font-semibold">¡Actualiza tu Información!</p>
-						<a
-							href="/profile"
-							class="btn-primary btn-primary [400px]:w-auto mb-8 inline-block w-56 rounded-full bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600"
-							>Actualizar</a
-						>
-					</div>
-				</section>
-				<section class="mb-8 items-center justify-center rounded border">
-					<div class="text-center">
-						<p class="my-4 text-lg font-semibold">¡Cambia tu Contraseña!</p>
-						<a
-							href="/update"
-							class="btn-primary btn-primary mb-8 inline-block w-56 rounded-full bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600"
-							>Cambiar</a
-						>
-					</div>
-				</section>
-				<section class="mb-8 items-center justify-center rounded border bg-gray-200 pb-8">
-					<div class="text-center">
-						<p class="my-4 text-lg font-semibold">Otras Opciones</p>
-						<Button content="Opciones" disable={true} />
-					</div>
-				</section>
-			</div>
-		</main>
-	</body>
+	<AlterHeader />
+	<Wave class="absolute right-0 -z-10 h-auto" />
+	<main class="container mx-auto mb-16 mt-24 p-4">
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+			<section class="mb-8 items-center justify-center rounded border">
+				<div class="text-center">
+					<p class="my-4 text-lg font-semibold">Listado de Clases Creadas</p>
+					<a
+						href="/dashboardteacher"
+						class="btn-primary btn-primary mb-8 inline-block w-56 rounded-full bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600"
+						>Clases Creadas</a
+					>
+				</div>
+			</section>
+			<section class="mb-8 items-center justify-center rounded border">
+				<div class="text-center">
+					<p class="my-4 text-lg font-semibold">¡Actualiza tu Información!</p>
+					<a
+						href="/profile"
+						class="btn-primary btn-primary [400px]:w-auto mb-8 inline-block w-56 rounded-full bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600"
+						>Actualizar</a
+					>
+				</div>
+			</section>
+			<section class="mb-8 items-center justify-center rounded border">
+				<div class="text-center">
+					<p class="my-4 text-lg font-semibold">¡Cambia tu Contraseña!</p>
+					<a
+						href="/update"
+						class="btn-primary btn-primary mb-8 inline-block w-56 rounded-full bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600"
+						>Cambiar</a
+					>
+				</div>
+			</section>
+			<section class="mb-8 items-center justify-center rounded border bg-gray-200 pb-8">
+				<div class="text-center">
+					<p class="my-4 text-lg font-semibold">Otras Opciones</p>
+					<Button content="Opciones" disable={true} />
+				</div>
+			</section>
+		</div>
+	</main>
 	<Footer />
 </Layout>
