@@ -71,6 +71,7 @@
 		formData.append("userName", data.userName)
 		formData.append("email", data.email)
 		formData.append("password", data.password)
+		formData.append("confirmPassword", data.confirmPasswd)
 		formData.append("role", data.role)
 
 		const res = await fetch("/api/signup", {
@@ -78,15 +79,9 @@
 			body: formData,
 		})
 
-		if (!res.ok) {
-			const error = await res.json()
-			errors.server = error.message
-			return
-		}
-
 		const result = await res.json()
 
-		if (result?.error) {
+		if (result.error) {
 			errors.server = result.error
 			return
 		}
