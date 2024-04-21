@@ -9,6 +9,7 @@
 		email: "",
 		password: "",
 		confirmPassword: "",
+		server: "",
 	}
 
 	async function handleUserSignUp(e) {

@@ -36,11 +36,11 @@ export async function validateResponse(response) {
 	if (!response.ok) {
 		const error = await response.json()
 		return error.message
-	}
+	} else return ""
 }
 
 export function validateResult(result) {
 	if (result?.error) {
 		return result.error
-	}
+	} else return ""
 }
