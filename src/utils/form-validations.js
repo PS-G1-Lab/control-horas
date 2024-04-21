@@ -24,7 +24,7 @@ export function validatePassword(password) {
 	} else return ""
 }
 
-export function confirmPassword(password, confirmPassword) {
+export function validateConfirmPassword(password, confirmPassword) {
 	if (confirmPassword === "") {
 		return "La confirmación de la contraseña es requerida"
 	} else if (password !== confirmPassword) {

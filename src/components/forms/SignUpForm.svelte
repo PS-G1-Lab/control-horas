@@ -2,7 +2,7 @@
 	import Input from "@/components/forms/Input.svelte"
 
 	import { ROLE_STATUS, appStatus } from "@/store.ts"
-	import { validateUserName } from "../../utils/form-validations"
+	import { validateConfirmPassword, validateEmail, validatePassword, validateResponse, validateResult, validateUserName } from "../../utils/form-validations"
 
 	const errors = {
 		userName: "",
@@ -31,7 +31,7 @@
 		errors.password = validatePassword(data.password)
 		if (errors.password) return
 
-		errors.confirmPassword = confirmPassword(data.password, data.confirmPasswd)
+		errors.confirmPassword = validateConfirmPassword(data.password, data.confirmPasswd)
 		if (errors.confirmPassword) return
 
 		if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
