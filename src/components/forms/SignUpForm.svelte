@@ -49,6 +49,7 @@
 		formData.append("userName", data.userName)
 		formData.append("email", data.email)
 		formData.append("password", data.password)
+		formData.append("confirmPassword", data.confirmPasswd)
 		formData.append("role", data.role)
 
 		const res = await fetch("/api/signup", {
