@@ -5,7 +5,7 @@ import Button from "@/components/Button.astro"
 import Footer from "@/components/Footer.astro"
 import Layout from "@/layouts/Layout.astro"
 
-if (!Astro.cookies.has("session")) {
+if (!Astro.cookies.has("session") || !Astro.cookies.has("user")) {
 	return Astro.redirect("/login")
 }
 ---
@@ -24,11 +24,46 @@ if (!Astro.cookies.has("session")) {
 				<div class="scroll-container hidden overflow-x-hidden overflow-y-scroll lg:block">
 					<hr class="mb-8 w-full border-b border-black" />
 					<!-- To do bd -->
-					<BorderTeacher title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
-					<BorderTeacher title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
-					<BorderTeacher title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
-					<BorderTeacher title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
-					<BorderTeacher title="" dias="" ambito="" horaStart="" horaFin="" nAlumnos="" />
+					<BorderTeacher
+						title="Clase Avanzada de Python"
+						dias="03/04/2024"
+						ambito="Informática"
+						horaStart="16:00"
+						horaFin="18:00"
+						nAlumnos="33"
+					/>
+					<BorderTeacher
+						title="Clase Principiante de Piano"
+						dias="15/04/2024"
+						ambito="Música"
+						horaStart="18:00"
+						horaFin="19:00"
+						nAlumnos="7"
+					/>
+					<BorderTeacher
+						title="Clase Avanzada de Python"
+						dias="03/04/2024"
+						ambito="Informática"
+						horaStart="16:00"
+						horaFin="18:00"
+						nAlumnos="33"
+					/>
+					<BorderTeacher
+						title="Clase Avanzada de Python"
+						dias="03/04/2024"
+						ambito="Informática"
+						horaStart="16:00"
+						horaFin="18:00"
+						nAlumnos="33"
+					/>
+					<BorderTeacher
+						title="Clase Avanzada de Python"
+						dias="03/04/2024"
+						ambito="Informática"
+						horaStart="16:00"
+						horaFin="18:00"
+						nAlumnos="33"
+					/>
 
 					<div class="mb-7 flex w-full justify-end">
 						<Button content="Anular clase" disable={false} />

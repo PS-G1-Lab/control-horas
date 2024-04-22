@@ -9,32 +9,32 @@ if (!Astro.cookies.has("session") || !Astro.cookies.has("user")) {
 	return Astro.redirect("/login")
 }
 
-if (Astro.cookies.get("session") && Astro.cookies.get("user")) {
-	const sessionToken = Astro.cookies.get("session").value
-	const userId = Astro.cookies.get("user").value
+// if (Astro.cookies.get("session") && Astro.cookies.get("user")) {
+// 	const sessionToken = Astro.cookies.get("session").value
+// 	const userId = Astro.cookies.get("user").value
 
-	const sessionData = {
-		sessionToken,
-		userId,
-	}
+// 	const sessionData = {
+// 		sessionToken,
+// 		userId,
+// 	}
 
-	// console.log(sessionData)
+// 	console.log(sessionData)
 
-	// const res = await fetch("http://localhost:1234/user/checkSession", {
-	// 	method: "POST",
-	// 	body: JSON.stringify(sessionData),
-	// })
-	// 	.then((response) => response.json())
-	// 	.catch((err) => console.error(err))
+// 	const res = await fetch("http://localhost:1234/user/checkSession", {
+// 		method: "POST",
+// 		body: JSON.stringify(sessionData),
+// 	})
+// 		.then((response) => response.json())
+// 		.catch((err) => console.error(err))
 
-	// console.log(res)
+// 	console.log(res)
 
-	// if (data.error) {
-	// 	Astro.cookies.delete("session")
-	// 	Astro.cookies.delete("user")
-	// 	return Astro.redirect("/login")
-	// }
-}
+// 	if (data.error) {
+// 		Astro.cookies.delete("session")
+// 	 	Astro.cookies.delete("user")
+// 		return Astro.redirect("/login")
+// 	}
+// }
 ---
 
 <Layout
