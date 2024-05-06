@@ -3,32 +3,32 @@
 	
 	const errors = {
 		title: "",
-		date: "",
+		subject: "",
 		startAt: "",
 		end: "",
+		date: "",
 		description: "",
-		subject: "",
 	}
 
 	async function handleClassCreation(e) {
 		e.preventDefault()
 
-		const { title, date, startAt, end, description, subject } = e.target.elements
+		const { title, subject, startAt, end, date, description } = e.target.elements
 
 		const data = {
 			title: title.value.trim(),
-			date: date.value.trim(),
+			subject: subject.value.trim(),
 			startAt: startAt.value.trim(),
 			end: end.value.trim(),
+			date: date.value.trim(),
 			description: description.value.trim(),
-			subject: subject.value.trim(),
 		}
 
 		errors.title = validateTitle(data.title)
 		if (errors.title) return
 
-		errors.date = validateDate(data.date)
-		if (errors.date) return
+		errors.subject = validateSubject(data.subject)
+		if (errors.subject) return
 
 		errors.startAt = validateHour(data.startAt)
 		if (errors.startAt) return
@@ -36,19 +36,20 @@
 		errors.end = validateHour(data.end)
 		if (errors.end) return
 
+		errors.date = validateDate(data.date)
+		if (errors.date) return
+
 		errors.description = validateDescription(data.description)
 		if (errors.description) return
 
-		errors.subject = validateSubject(data.subject)
-		if (errors.subject) return
-
 		const formData = new FormData()
 		formData.append("title", data.title)
-		formData.append("date", data.date)
+		formData.append("subject", data.subject)
 		formData.append("startAt", data.startAt)
 		formData.append("end", data.end)
+		formData.append("date", data.date)
 		formData.append("description", data.description)
-		formData.append("subject", data.subject)
+		
 
 		const res = await fetch("/api/createclass", {
 			method: "POST",
