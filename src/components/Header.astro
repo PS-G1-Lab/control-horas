@@ -80,18 +80,16 @@ import Logo from "@/icons/Logo.astro"
 					>Opiniones</a
 				>
 			</li>
-			<li
-				class="mx-3 rounded px-3 py-2 transition ease-in-out hover:bg-neutral-100 max-sm:mt-2 lg:mx-0"
-			>
+			<li class="mx-3 my-auto">
 				<button
-					class="inline-flex justify-center"
+					class="inline-flex justify-center gap-2 rounded px-3 py-2 transition ease-in-out hover:bg-neutral-100"
 					id="lang-menu"
 					aria-haspopup="true"
 					aria-expanded="true"
 					onclick="_googleTranslateElementInit()"
 				>
 					<img src="icons/translation.svg" alt="Icono de traducción" />
-					&nbsp; Translate
+					Translate
 				</button>
 				<div class="absolute mt-2 hidden" id="google_translate_element"></div>
 			</li>
