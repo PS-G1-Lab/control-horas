@@ -1,7 +1,4 @@
 <script>
-	import Button from "@/components/Button.astro"
-	import Textbox from "@/components/Textbox.astro"
-	import Textpassword from "@/components/Textpassword.astro"
 	import { validateConfirmPassword, validateEmail, validatePassword } from "../../utils/form-validations"
 
 	let email = ""
@@ -72,7 +69,6 @@
 	$: submitButtonDisabled = !!errors.email || !!errors.newPassword || !!errors.confirmPassword
 </script>
 
-
 <section class="flex flex-col">
   <div class="flex h-screen items-center justify-center">
     <img
@@ -80,42 +76,51 @@
       alt="Ilustración de un hombre pensando una contraseña"
       class="mr-6 hidden lg:block"
     />
-    <div class="w-max max-w-md border border-orange-500 bg-white p-8 shadow-md">
-      <form method="post" on:submit={(e) => handleUpdatePassword(e)} >
-        <h2 class="mb-4 mr-32 text-2xl font-bold">Nueva Contraseña</h2>
+    <div class="w-3/12 border border-orange-500 bg-white p-8 shadow-md">
+      <form method="post" on:submit={(e) => handleUpdatePassword(e)}>
+        <h2 class="mb-4 text-3xl font-bold">Nueva Contraseña</h2>
         <div class="mb-4">
-        	<Textbox type="email" id="email" content="" placeholder="Correo" bind:value={email} />
+					<p class="text-xl flex justify-normal font-sans font-bold"> Correo</p>
+          <input type="email" id="email" placeholder="Correo" bind:value={email} class="w-full border-b-2 border-black mb-4 mt-4 outline-none" />
         </div>
         {#if errors.email}
-        <div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
           <span class="font-medium">{errors.email}</span>
         </div>
         {/if}
         <div class="mb-4">
-          <Textpassword content="Nueva Contraseña" bind:value={newPassword} />
+					<p class="text-xl flex justify-normal font-sans font-bold"> Contraseña</p>
+          <input type="password" id="newPassword" placeholder="Nueva Contraseña" bind:value={newPassword} class="w-full mb-4 mt-4 border-b-2 border-black outline-none" />
         </div>
-        {#if errors.newPassword}   	
-        <div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+        {#if errors.newPassword}   
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
           <span class="font-medium">{errors.newPassword}</span>
         </div>
         {/if}
         <div class="mb-4">
-          <Textpassword content="Repetir Contraseña" bind:value={confirmPassword} />
+					<p class="text-xl flex justify-normal font-sans font-bold"> Repetir contraseña</p>
+          <input type="password" id="confirmPassword" placeholder="Repetir Contraseña" bind:value={confirmPassword} class="w-full mt-4 mb-4 border-b-2 border-black outline-none" />
         </div>
         {#if errors.confirmPassword}
-        <div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
           <span class="font-medium">{errors.confirmPassword}</span>
-       	</div>
+        </div>
         {/if}
         {#if errors.apiError}
-        <div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
           <span class="font-medium">{errors.apiError}</span>
         </div>
         {/if}
-        <div class="mt-9 flex items-center justify-center">
-          <Button content="Confirmar Contraseña" disabled={submitButtonDisabled} />
+        <div class="flex justify-center">
+          <input
+            type="submit"
+            value="Confirmar contraseña"
+            class="mx-auto w-56 justify-center rounded-full bg-orange-500 px-4 py-2 text-lg font-bold text-white hover:bg-orange-600 cursor-pointer"
+          />
         </div>
       </form>
     </div>
   </div>
 </section>
+
+
