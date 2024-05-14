@@ -32,19 +32,6 @@ export function validateConfirmPassword(password, confirmPassword) {
 	} else return ""
 }
 
-export async function validateResponse(response) {
-	if (!response.ok) {
-		const error = await response.json()
-		return error.message
-	} else return ""
-}
-
-export function validateResult(result) {
-	if (result?.error) {
-		return result.error
-	} else return ""
-}
-
 export function validateTitle(title) {
 	if (title === "") {
 		return "El título es requerido"

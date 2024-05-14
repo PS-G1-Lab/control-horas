@@ -2,7 +2,7 @@
 	import Input from "@/components/forms/Input.svelte"
 
 	import { ROLE_STATUS, appStatus } from "@/store.ts"
-	import { validateConfirmPassword, validateEmail, validatePassword, validateResponse, validateResult, validateUserName } from "../../utils/form-validations"
+	import { validateConfirmPassword, validateEmail, validatePassword, validateUserName } from "../../utils/form-validations"
 
 	const errors = {
 		userName: "",
@@ -57,12 +57,17 @@
 			body: formData,
 		})
 
-		errors.server = validateResponse(res)
+		if (!res.ok) {
+			errors.server = await res.json()
+		} else errors.server = ""
 		if (errors.server) return
 
 		const result = await res.json()
 
-		errors.server = validateResult(result)
+		if (result?.error) {
+			console.log(result.error)
+			errors.server = result.error
+		} else errors.server = ""
 		if (errors.server) return
 
 		window.location.href = "/login"

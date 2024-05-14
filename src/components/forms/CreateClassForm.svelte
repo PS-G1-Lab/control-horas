@@ -1,6 +1,6 @@
 <script>
-	import { validateDate, validateDescription, validateHour, validateResponse, validateResult, validateSubject, validateTitle } from "@/utils/form-validations"
-	
+	import { validateDate, validateDescription, validateHour, validateSubject, validateTitle } from "@/utils/form-validations"
+				
 	const errors = {
 		title: "",
 		subject: "",
@@ -9,7 +9,7 @@
 		date: "",
 		description: "",
 	}
-
+	
 	async function handleClassCreation(e) {
 		e.preventDefault()
 
@@ -43,27 +43,30 @@
 		if (errors.description) return
 
 		const formData = new FormData()
-		formData.append("userId", 1)
+		formData.append("userId", 18)
 		formData.append("title", data.title)
 		formData.append("subject", data.subject)
 		formData.append("startAt", data.startAt)
-		formData.append("end", data.end)
+		formData.append("endTime", data.end)
 		formData.append("date", data.date)
 		formData.append("description", data.description)
-
-		console.log(JSON.stringify(Object.fromEntries(formData.entries())))
 
 		const res = await fetch("/api/createclass", {
 			method: "POST",
 			body: formData,
 		})
 
-		errors.server = validateResponse(res)
+		if (!res.ok) {
+			errors.server = await res.json()
+		} else errors.server = ""
 		if (errors.server) return
 
 		const result = await res.json()
 
-		errors.server = validateResult(result)
+		if (result?.error) {
+			console.log(result.error)
+			errors.server = result.error
+		} else errors.server = ""
 		if (errors.server) return
 
 		window.location.href = "/dashboardteacher"
