@@ -9,7 +9,7 @@ export const POST: APIRoute = async ({ request }) => {
 
 	// const response = await fetch("http://localhost:1234/user/login", {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const response = await fetch("https://control-horas-api-dev-zjjb.2.ie-1.fl0.io/user/login", {
+	const response = await fetch("https://control-horas-api.onrender.com/user/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

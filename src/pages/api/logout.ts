@@ -7,9 +7,9 @@ export const POST: APIRoute = async ({ request }) => {
 		userData[key] = value
 	}
 
-	// const response = await fetch("http://localhost:1234/user/signup", {
+	// const response = await fetch("http://localhost:1234/user/logout", {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const response = await fetch("https://control-horas-api.onrender.com/user/signup", {
+	const response = await fetch("https://control-horas-api.onrender.com/user/logout", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
