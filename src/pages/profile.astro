@@ -52,11 +52,32 @@ import Layout from "@/layouts/Layout.astro"
 		</form>
 	</section>
 	<div class="mx-auto mb-8 flex w-[720px] items-center justify-between">
-		<a href="/logout" class="flex items-center gap-2 text-lg font-semibold">
+		<button class="flex items-center gap-2 text-lg font-semibold" id="logout_button">
 			<LogoutIcon />
-			<span>Cerrar Sesión</span>
-		</a>
+			Cerrar Sesión
+		</button>
 		<div><Button content="Guardar Cambios" disable={false} /></div>
 	</div>
 	<Footer />
 </Layout>
+
+<script>
+	const logoutButton = document.getElementById("logout_button")
+	logoutButton.addEventListener("click", async (event) => {
+		event.preventDefault()
+
+		const formData = new FormData()
+		formData.append("userId", "19")
+		formData.append("sessionToken", "277fdb57-897f-441d-82eb-4b40f63efb74")
+
+		const response = await fetch("/api/logout", {
+			method: "POST",
+			body: formData,
+		})
+		if (response.ok) {
+			window.location.href = "/logout"
+		} else {
+			console.error("Error al cerrar la sesión")
+		}
+	})
+</script>
