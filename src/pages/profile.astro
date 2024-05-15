@@ -66,9 +66,15 @@ import Layout from "@/layouts/Layout.astro"
 	logoutButton.addEventListener("click", async (event) => {
 		event.preventDefault()
 
+		const cookies = document.cookie.split("; ").reduce((prev, current) => {
+			const [name, value] = current.split("=")
+			prev[name] = value
+			return prev
+		}, {})
+
 		const formData = new FormData()
-		formData.append("userId", "19")
-		formData.append("sessionToken", "277fdb57-897f-441d-82eb-4b40f63efb74")
+		formData.append("userId", cookies.user)
+		formData.append("sessionToken", cookies.session)
 
 		const response = await fetch("/api/logout", {
 			method: "POST",

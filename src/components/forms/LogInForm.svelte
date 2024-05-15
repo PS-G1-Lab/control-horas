@@ -1,6 +1,6 @@
 <script>
 	import Input from "@/components/forms/Input.svelte"
-	import { validateEmail, validatePassword } from "../../utils/form-validations"
+	import { validateEmail, validatePassword } from "@/utils/form-validations"
 
 	const errors = {
 		email: "",
@@ -33,18 +33,17 @@
 			body: formData,
 		})
 
-		if (!res.ok) {
-			errors.server = await res.json()
-		} else errors.server = ""
-		if (errors.server) return
-
 		const result = await res.json()
 
-		if (result?.error) {
-			console.log(result.error)
-			errors.server = result.error
-		} else errors.server = ""
-		if (errors.server) return
+		if (!res.ok) {
+			ERRORS.server = result.message
+			return
+		}
+
+		if (result.error) {
+			ERRORS.server = result.error
+			return
+		}
 
 		// Create a session cokie to permit access to the dashboard
 		document.cookie = `session=${result.sessionToken}; path=/; max-age=3600; samesite=strict; secure`

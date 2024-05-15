@@ -42,8 +42,14 @@
 		errors.description = validateDescription(data.description)
 		if (errors.description) return
 
+		const cookies = document.cookie.split("; ").reduce((prev, current) => {
+			const [name, value] = current.split("=")
+			prev[name] = value
+			return prev
+		}, {})
+
 		const formData = new FormData()
-		formData.append("userId", 18)
+		formData.append("userId", cookies.user)
 		formData.append("title", data.title)
 		formData.append("subject", data.subject)
 		formData.append("startAt", data.startAt)
@@ -56,18 +62,17 @@
 			body: formData,
 		})
 
-		if (!res.ok) {
-			errors.server = await res.json()
-		} else errors.server = ""
-		if (errors.server) return
-
 		const result = await res.json()
 
-		if (result?.error) {
-			console.log(result.error)
-			errors.server = result.error
-		} else errors.server = ""
-		if (errors.server) return
+		if (!res.ok) {
+			ERRORS.server = result.message
+			return
+		}
+
+		if (result.error) {
+			ERRORS.server = result.error
+			return
+		}
 
 		window.location.href = "/dashboardteacher"
 	}
