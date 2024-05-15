@@ -15,5 +15,37 @@ import Logo from "@/icons/Logo.astro"
 	>
 		<Logo class="object-contain" />
 	</a>
+	<div class="mx-3 my-auto font-medium">
+		<button
+			class="inline-flex justify-center gap-2 rounded px-3 py-2 transition ease-in-out hover:bg-neutral-100"
+			id="lang-menu"
+			aria-haspopup="true"
+			aria-expanded="true"
+			onclick="_googleTranslateElementInit()"
+		>
+			<img src="icons/translation.svg" alt="Icono de traducción" />
+			Translate
+		</button>
+		<div class="absolute mt-2 hidden" id="google_translate_element"></div>
+	</div>
 	<RoleButtons client:idle />
 </header>
+
+<script>
+	const langMenu = document.querySelector("#lang-menu")
+	const langMenuContent = document.querySelector("#google_translate_element")
+	langMenu.addEventListener("click", () => {
+		langMenuContent.classList.toggle("hidden")
+	})
+</script>
+
+<script
+	type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+	/* eslint-disable no-undef */
+	function _googleTranslateElementInit() {
+		google.translate.TranslateElement({ pageLanguage: "es" }, "google_translate_element")
+	}
+	/* eslint-enable no-undef */
+</script>

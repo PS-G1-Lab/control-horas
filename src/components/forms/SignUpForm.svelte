@@ -2,9 +2,14 @@
 	import Input from "@/components/forms/Input.svelte"
 
 	import { ROLE_STATUS, appStatus } from "@/store.ts"
-	import { validateConfirmPassword, validateEmail, validatePassword, validateUserName } from "../../utils/form-validations"
+	import {
+		validateConfirmPassword,
+		validateEmail,
+		validatePassword,
+		validateUserName,
+	} from "@/utils/form-validations.js"
 
-	const errors = {
+	const ERRORS = {
 		userName: "",
 		email: "",
 		password: "",
@@ -13,6 +18,8 @@
 	}
 
 	async function handleUserSignUp(e) {
+		e.preventDefault()
+
 		const { userName, email, password, confirmPassword, role } = e.target.elements
 
 		const data = {
@@ -23,17 +30,14 @@
 			role: role.value.trim(),
 		}
 
-		errors.userName = validateUserName(data.userName)
-		if (errors.userName) return
+		ERRORS.userName = validateUserName(data.userName)
+		ERRORS.email = validateEmail(data.email)
+		ERRORS.password = validatePassword(data.password)
+		ERRORS.confirmPassword = validateConfirmPassword(data.password, data.confirmPasswd)
 
-		errors.email = validateEmail(data.email)
-		if (errors.email) return
-
-		errors.password = validatePassword(data.password)
-		if (errors.password) return
-
-		errors.confirmPassword = validateConfirmPassword(data.password, data.confirmPasswd)
-		if (errors.confirmPassword) return
+		if (ERRORS.userName || ERRORS.email || ERRORS.password || ERRORS.confirmPassword) {
+			return
+		}
 
 		if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
 			const localRole = localStorage.getItem("role")
@@ -57,20 +61,35 @@
 			body: formData,
 		})
 
-		if (!res.ok) {
-			errors.server = await res.json()
-		} else errors.server = ""
-		if (errors.server) return
-
 		const result = await res.json()
 
-		if (result?.error) {
-			console.log(result.error)
-			errors.server = result.error
-		} else errors.server = ""
-		if (errors.server) return
+		if (!res.ok) {
+			ERRORS.server = result.message
+			return
+		}
+
+		if (result.error) {
+			ERRORS.server = result.error
+			return
+		}
 
 		window.location.href = "/login"
+	}
+
+	function showPassword() {
+		if (password.type === "password") {
+			password.type = "text"
+		} else {
+			password.type = "password"
+		}
+	}
+
+	function showConfirmPassword() {
+		if (confirmPassword.type === "password") {
+			confirmPassword.type = "text"
+		} else {
+			confirmPassword.type = "password"
+		}
 	}
 </script>
 
@@ -84,41 +103,65 @@
 			<a href="/login" class="ml-1 underline text-orange-500">Inicia sesión</a>
 		</p>
 	</div>
-	{#if errors.server}
+	{#if ERRORS.server}
 		<div class="mb-4 rounded-lg bg-yellow-50 p-4 text-sm text-yellow-800" role="alert">
-			<span class="font-medium">{errors.server}</span>
+			<span class="font-medium">{ERRORS.server}</span>
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
 		<Input type="text" id="userName" content="Nombre completo:" />
 	</div>
-	{#if errors.userName}
+	{#if ERRORS.userName}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-			<span class="font-medium">{errors.userName}</span>
+			<span class="font-medium">{ERRORS.userName}</span>
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
 		<Input type="email" id="email" content="Correo:" />
 	</div>
-	{#if errors.email}
+	{#if ERRORS.email}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-			<span class="font-medium">{errors.email}</span>
+			<span class="font-medium">{ERRORS.email}</span>
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
 		<Input type="password" id="password" content="Contraseña:" />
+		<button
+			type="button"
+			class="absolute right-2 top-2 w-6 h-6 cursor-pointer"
+			id="showPassword"
+			on:click={showPassword}
+		>
+			<img
+				src="/icons/eye.svg"
+				alt="Icono de un ojo"
+				class="absolute right-2 top-2 w-6 h-6 cursor-pointer"
+			/>
+		</button>
 	</div>
-	{#if errors.password}
+	{#if ERRORS.password}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-			<span class="font-medium">{errors.password}</span>
+			<span class="font-medium">{ERRORS.password}</span>
 		</div>
 	{/if}
 	<div class="relative flex justify-center w-80">
 		<Input type="password" id="confirmPassword" content="Confirmar contraseña:" />
+		<button
+			type="button"
+			class="absolute right-2 top-2 w-6 h-6 cursor-pointer"
+			id="showConfirmPassword"
+			on:click={showConfirmPassword}
+		>
+			<img
+				src="/icons/eye.svg"
+				alt="Icono de un ojo"
+				class="absolute right-2 top-2 w-6 h-6 cursor-pointer"
+			/>
+		</button>
 	</div>
-	{#if errors.confirmPassword}
+	{#if ERRORS.confirmPassword}
 		<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-			<span class="font-medium">{errors.confirmPassword}</span>
+			<span class="font-medium">{ERRORS.confirmPassword}</span>
 		</div>
 	{/if}
 	<Input type="hidden" id="role" value={`${$appStatus}`} />
