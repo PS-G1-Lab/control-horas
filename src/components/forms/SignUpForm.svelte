@@ -2,7 +2,12 @@
 	import Input from "@/components/forms/Input.svelte"
 
 	import { ROLE_STATUS, appStatus } from "@/store.ts"
-	import { validateConfirmPassword, validateEmail, validatePassword, validateResponse, validateResult, validateUserName } from "../../utils/form-validations"
+	import {
+		validateConfirmPassword,
+		validateEmail,
+		validatePassword,
+		validateUserName,
+	} from "@/utils/form-validations.js"
 
 	const errors = {
 		userName: "",
@@ -13,6 +18,8 @@
 	}
 
 	async function handleUserSignUp(e) {
+		e.preventDefault()
+
 		const { userName, email, password, confirmPassword, role } = e.target.elements
 
 		const data = {
@@ -24,16 +31,13 @@
 		}
 
 		errors.userName = validateUserName(data.userName)
-		if (errors.userName) return
-
 		errors.email = validateEmail(data.email)
-		if (errors.email) return
-
 		errors.password = validatePassword(data.password)
-		if (errors.password) return
-
 		errors.confirmPassword = validateConfirmPassword(data.password, data.confirmPasswd)
-		if (errors.confirmPassword) return
+
+		if (errors.userName || errors.email || errors.password || errors.confirmPassword) {
+			return
+		}
 
 		if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
 			const localRole = localStorage.getItem("role")
@@ -57,13 +61,17 @@
 			body: formData,
 		})
 
-		errors.server = validateResponse(res)
-		if (errors.server) return
-
 		const result = await res.json()
 
-		errors.server = validateResult(result)
-		if (errors.server) return
+		if (!res.ok) {
+			errors.server = result.message
+			return
+		}
+
+		if (result.error) {
+			errors.server = result.error
+			return
+		}
 
 		window.location.href = "/login"
 	}
