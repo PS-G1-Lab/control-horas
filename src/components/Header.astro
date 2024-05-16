@@ -7,7 +7,7 @@ import Logo from "@/icons/Logo.astro"
 >
 	<a
 		href="/"
-		class="mb-3 transition ease-in-out hover:scale-[1.1] md:mb-0"
+		class="mb-3 ml-2 transition ease-in-out hover:scale-[1.1] md:mb-0"
 		aria-current="page"
 		aria-label="Enlace que te lleva a la página principal de presentación"
 	>
@@ -33,28 +33,32 @@ import Logo from "@/icons/Logo.astro"
 				fill="currentColor"
 				viewBox="0 0 20 20"
 				xmlns="http://www.w3.org/2000/svg"
-				><path
+			>
+				<path
 					fill-rule="evenodd"
 					d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-					clip-rule="evenodd"></path></svg
-			>
+					clip-rule="evenodd"></path>
+			</svg>
 			<svg
 				class="hidden h-6 w-6"
 				fill="currentColor"
 				viewBox="0 0 20 20"
 				xmlns="http://www.w3.org/2000/svg"
-				><path
+			>
+				<path
 					fill-rule="evenodd"
 					d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-					clip-rule="evenodd"></path></svg
-			>
+					clip-rule="evenodd"></path>
+			</svg>
 		</button>
 	</div>
 	<nav
 		class="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
 		id="mobile-menu"
 	>
-		<ul class="mt-4 flex flex-row justify-center font-medium lg:mt-0 lg:space-x-8">
+		<ul
+			class="mt-4 flex items-center justify-center font-medium max-sm:flex-wrap lg:mt-0 lg:space-x-8"
+		>
 			<li>
 				<a
 					href="/#learn"
@@ -76,6 +80,19 @@ import Logo from "@/icons/Logo.astro"
 					>Opiniones</a
 				>
 			</li>
+			<li class="mx-3 my-auto">
+				<button
+					class="inline-flex justify-center gap-2 rounded px-3 py-2 transition ease-in-out hover:bg-neutral-100"
+					id="lang-menu"
+					aria-haspopup="true"
+					aria-expanded="true"
+					onclick="_googleTranslateElementInit()"
+				>
+					<img src="icons/translation.svg" alt="Icono de traducción" />
+					Translate
+				</button>
+				<div class="absolute mt-2 hidden" id="google_translate_element"></div>
+			</li>
 		</ul>
 	</nav>
 </header>
@@ -86,4 +103,20 @@ import Logo from "@/icons/Logo.astro"
 	mobileMenu.addEventListener("click", () => {
 		mobileMenuContent.classList.toggle("hidden")
 	})
+	const langMenu = document.querySelector("#lang-menu")
+	const langMenuContent = document.querySelector("#google_translate_element")
+	langMenu.addEventListener("click", () => {
+		langMenuContent.classList.toggle("hidden")
+	})
+</script>
+
+<script
+	type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+	/* eslint-disable no-undef */
+	function _googleTranslateElementInit() {
+		google.translate.TranslateElement({ pageLanguage: "es" }, "google_translate_element")
+	}
+	/* eslint-enable no-undef */
 </script>

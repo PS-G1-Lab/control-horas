@@ -8,7 +8,7 @@ export const POST: APIRoute = async ({ request }) => {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const response = await fetch("https://control-horas-api.onrender.com/user/signup", {
+	const response = await fetch("https://control-horas-api.onrender.com/user/checkSession", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

@@ -1,11 +1,48 @@
 <script>
 	import Input from "@/components/forms/Input.svelte"
+	import { onMount } from "svelte"
 
-	const errors = {
+	import { validateEmail, validatePassword } from "@/utils/form-validations.js"
+
+	const ERRORS = {
 		email: "",
 		password: "",
 		server: "",
 	}
+
+	async function checkLogged() {
+		const session = document.cookie.split("; ").find((row) => row.startsWith("session"))
+		const user = document.cookie.split("; ").find((row) => row.startsWith("user"))
+
+		if (session && user) {
+			const formData = new FormData()
+			formData.append("sessionToken", session.split("=")[1])
+			formData.append("userId", user.split("=")[1])
+
+			const res = await fetch("/api/checkLogged", {
+				method: "POST",
+				body: formData,
+			})
+
+			const result = await res.json()
+
+			if (!res.ok) {
+				ERRORS.server = result.message
+				return
+			}
+
+			if (result.error) {
+				ERRORS.server = result.error
+				return
+			}
+
+			window.location.href = "/dashboard"
+		}
+	}
+
+	onMount(() => {
+		checkLogged()
+	})
 
 	async function handleUserLogIn(e) {
 		e.preventDefault()
@@ -17,24 +54,10 @@
 			password: password.value.trim(),
 		}
 
-		if (data.email === "") {
-			errors.email = "Este email es requerido"
-			return
-		} else errors.email = ""
+		ERRORS.email = validateEmail(data.email)
+		ERRORS.password = validatePassword(data.password)
 
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-		if (!emailRegex.test(data.email)) {
-			errors.email = "El correo no es válido"
-			return
-		}
-
-		if (data.password === "") {
-			errors.password = "La contraseña es requerida"
-			return
-		} else errors.password = ""
-
-		if (data.password.length < 8) {
-			errors.password = "La contraseña debe ser de al menos 8 caracteres"
+		if (ERRORS.email || ERRORS.password) {
 			return
 		}
 
@@ -47,23 +70,30 @@
 			body: formData,
 		})
 
-		if (!res.ok) {
-			const error = await res.json()
-			errors.server = error.message
-			return
-		}
-
 		const result = await res.json()
 
-		if (result?.error) {
-			errors.server = result.error
+		if (!res.ok) {
+			ERRORS.server = result.message
 			return
 		}
 
-		// Create a session cokie to permit access to the dashboard
-		document.cookie = `session=${data.email}; path=/; max-age=3600; samesite=strict; secure`
+		if (result.error) {
+			ERRORS.server = result.error
+			return
+		}
+
+		document.cookie = `session=${result.sessionToken}; path=/; samesite=strict secure`
+		document.cookie = `user=${result.userId}; path=/; samesite=strict secure`
 
 		window.location.href = "/dashboard"
+	}
+
+	function showPassword() {
+		if (password.type === "password") {
+			password.type = "text"
+		} else {
+			password.type = "password"
+		}
 	}
 </script>
 
@@ -73,25 +103,37 @@
 		<a href="/signup" class="ml-1 text-primary underline">Regístrate</a>
 	</h2>
 	<form class="flex flex-col gap-y-12" method="post" on:submit={(e) => handleUserLogIn(e)}>
-		{#if errors.serverError}
+		{#if ERRORS.serverError}
 			<div class="mb-4 rounded-lg bg-yellow-50 p-4 text-sm text-yellow-800" role="alert">
-				<span class="font-medium">{errors.serverError}</span>
+				<span class="font-medium">{ERRORS.serverError}</span>
 			</div>
 		{/if}
 		<div class="relative">
 			<Input type="email" id="email" content="Correo:" placeholder=" " required="true" />
 		</div>
-		{#if errors.email}
+		{#if ERRORS.email}
 			<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-				<span class="font-medium">{errors.email}</span>
+				<span class="font-medium">{ERRORS.email}</span>
 			</div>
 		{/if}
 		<div class="relative">
 			<Input type="password" id="password" content="Contraseña:" placeholder=" " required="true" />
+			<button
+				type="button"
+				class="absolute right-2 top-2 w-6 h-6 cursor-pointer"
+				id="showPassword"
+				on:click={showPassword}
+			>
+				<img
+					src="/icons/eye.svg"
+					alt="Icono de un ojo"
+					class="absolute right-2 top-2 w-6 h-6 cursor-pointer"
+				/>
+			</button>
 		</div>
-		{#if errors.password}
+		{#if ERRORS.password}
 			<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-				<span class="font-medium">{errors.password}</span>
+				<span class="font-medium">{ERRORS.password}</span>
 			</div>
 		{/if}
 		<input

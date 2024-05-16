@@ -1,0 +1,68 @@
+---
+import AlterHeader from "@/components/AlterHeader.astro"
+import Button from "@/components/Button.astro"
+import Footer from "@/components/Footer.astro"
+import Textbox from "@/components/Textbox.astro"
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
+	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
+>
+	<AlterHeader />
+
+	<section class="relative mt-3 flex">
+		<section class="w-full p-4">
+			<div class="my-8">
+				<h2 class="mb-4 ml-5 text-base font-bold md:text-2xl lg:text-2xl">Clases creadas:</h2>
+				<hr class="mb-8 w-full border-b border-black" />
+				<div class="mx-auto max-w-[1100px]">
+					<!-- deben aparecer los datos de la bd -->
+					<form class="space-y-4 border border-black p-4">
+						<div>
+							<label for="tittle" class="block text-sm font-medium text-gray-700">Título</label>
+							<Textbox type="text" id="tittle" content="" placeholder="" />
+						</div>
+						<div>
+							<label for="dias" class="block text-sm font-medium text-gray-700">Días</label>
+							<Textbox type="text" id="dias" content="" placeholder="" />
+						</div>
+						<div>
+							<label for="ambito" class="block text-sm font-medium text-gray-700">Ámbito</label>
+							<Textbox type="text" id="ambito" content="" placeholder="" />
+						</div>
+						<div>
+							<label for="horaStart" class="block text-sm font-medium text-gray-700"
+								>Hora de inicio</label
+							>
+							<Textbox type="text" id="horaStart" content="" placeholder="" />
+						</div>
+						<div>
+							<label for="horaFin" class="block text-sm font-medium text-gray-700"
+								>Hora de finalización</label
+							>
+							<Textbox type="text" id="horaFin" content="" placeholder="" />
+						</div>
+						<div>
+							<label for="descripcion" class="block text-sm font-medium text-gray-700"
+								>Descripción</label
+							>
+							<Textbox type="text" id="descripcion" content="" placeholder="" />
+						</div>
+						<div>
+							<label for="precio" class="block text-sm font-medium text-gray-700">Precio</label>
+							<Textbox type="text" id="precio" content="" placeholder="" />
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="flex justify-end">
+				<Button content="Eliminar clase" disable={false} />
+				<Button content="Guardar cambios" disable={false} />
+			</div>
+		</section>
+	</section>
+
+	<Footer />
+</Layout>
