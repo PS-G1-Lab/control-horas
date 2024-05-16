@@ -1,6 +1,7 @@
 ---
 import Logo from "@/icons/Logo.astro"
-import User from "@/icons/User.astro"
+
+const { userName } = Astro.props
 ---
 
 <header
@@ -29,8 +30,7 @@ import User from "@/icons/User.astro"
 			<div class="absolute mt-2 hidden" id="google_translate_element"></div>
 		</div>
 		<a href="/profile" class="flex h-min items-center justify-end">
-			<span class="font-semibold tracking-tight">Nombre X</span>
-			<User />
+			<span class="font-semibold tracking-tight">{userName}</span>
 		</a>
 	</div>
 </header>
