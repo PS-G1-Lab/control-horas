@@ -77,7 +77,7 @@
 	}
 </script>
 
-<section class="my-3 mb-12 flex w-[580px] flex-col justify-center lg:w-1/2">
+<section class="my-12 lg:my-24 flex w-[580px] flex-col justify-center lg:w-1/2">
 	<div
 		class="mx-auto my-5 flex w-full items-center justify-center rounded-lg bg-primary px-4 text-white"
 	>
@@ -184,9 +184,7 @@
 			</div>
 		{/if}
 		<div class="col-span-2 flex justify-between">
-			<a href="/dashboardteacher" class="mt-2 rounded-md bg-white px-2 py-1 hover:bg-gray-200"
-				>Cancelar</a
-			>
+			<a href="/dashboard" class="mt-2 rounded-md bg-white px-2 py-1 hover:bg-gray-200">Cancelar</a>
 			<input
 				type="submit"
 				value="Crear"
