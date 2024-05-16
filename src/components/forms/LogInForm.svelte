@@ -1,6 +1,6 @@
 <script>
 	import Input from "@/components/forms/Input.svelte"
-	import { onMount } from 'svelte'
+	import { onMount } from "svelte"
 
 	import { validateEmail, validatePassword } from "@/utils/form-validations.js"
 
@@ -19,7 +19,7 @@
 			formData.append("sessionToken", session.split("=")[1])
 			formData.append("userId", user.split("=")[1])
 
-			const res = await fetch("/api/checkSession", {
+			const res = await fetch("/api/checkLogged", {
 				method: "POST",
 				body: formData,
 			})
