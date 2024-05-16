@@ -1,62 +1,93 @@
 ---
+import Layout from "@/layouts/Layout.astro"
+
 import AlterHeader from "@/components/AlterHeader.astro"
 import Button from "@/components/Button.astro"
 import Footer from "@/components/Footer.astro"
-import Textbox from "@/components/Textbox.astro"
+import UpdateUserDataForm from "@/components/forms/UpdateUserDataForm.svelte"
+
 import LogoutIcon from "@/icons/LogoutIcon.astro"
-import Layout from "@/layouts/Layout.astro"
+
+const session = Astro.cookies.get("session")
+const user = Astro.cookies.get("user")
+
+if (!session || !user) {
+	return Astro.redirect("/login")
+}
+
+const userData = {
+	userId: user.value,
+	sessionToken: session.value,
+}
+
+const data = await fetch("https://control-horas-api.onrender.com/user/checkSession", {
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify(userData),
+})
+	.then((response) => response.json())
+	.catch((error) => error as Error)
+
+if (data.error) {
+	Astro.cookies.delete("session")
+	Astro.cookies.delete("user")
+	return Astro.redirect("/login")
+}
+
+const { user_name: userName, email, role, is_verified: isVerified } = data.userData
 ---
 
 <Layout
 	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
 	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
 >
-	<AlterHeader />
+	<AlterHeader userName={userName} />
 	<section
-		class="mx-auto my-8 w-[720px] flex-col items-center justify-center gap-4 rounded border border-black p-8"
+		class="mx-auto my-16 w-[720px] flex-col items-center justify-center gap-4 rounded border border-black p-8"
 	>
 		<h2 class="text-lm mb-4 flex text-center font-sans font-bold">Información Personal</h2>
-		<form class="mb-4 flex flex-col gap-4">
-			<div>
-				<label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
-				<Textbox type="text" id="name" content="" placeholder="" />
-			</div>
-			<div>
-				<label for="email" class="block text-sm font-medium text-gray-700">Correo</label>
-				<Textbox type="email" id="email" content="" placeholder="" />
-			</div>
-			<Button content="Editar Información" disable={false} />
-		</form>
+		<UpdateUserDataForm client:idle />
 	</section>
 
 	<section
-		class="mx-auto mb-8 w-[720px] flex-col items-center justify-center gap-4 rounded border border-black p-8"
+		class="mx-auto mb-24 w-[720px] flex-col items-center justify-center gap-4 rounded border border-black p-8"
 	>
 		<h2 class="text-lm mb-4 flex text-center font-sans font-bold">Contraseña</h2>
-		<form class="mb-4 flex flex-col gap-4">
-			<p>Si quieres actualizar tu contraseña. ¡Pulsa aquí!</p>
-			<a
-				href="/update"
-				class="mx-auto
-				w-60
-				justify-center
+		<p class="my-5">Si quieres actualizar tu contraseña. ¡Pulsa aquí!</p>
+		<a
+			href="/change-password"
+			class="justify-center
 				rounded-full
 				bg-orange-500
+				px-4
 				py-2
 				text-center
 				text-lg
 				font-bold
 				text-white hover:bg-primary"
-				>Actualizar contraseña
-			</a>
-		</form>
+			>Actualizar contraseña
+		</a>
 	</section>
 	<div class="mx-auto mb-8 flex w-[720px] items-center justify-between">
 		<button class="flex items-center gap-2 text-lg font-semibold" id="logout_button">
 			<LogoutIcon />
 			Cerrar Sesión
 		</button>
-		<div><Button content="Guardar Cambios" disable={false} /></div>
+		<a
+			href="/dashboard"
+			class="justify-center
+		rounded-full
+		bg-orange-500
+		px-4
+		py-2
+		text-center
+		text-lg
+		font-bold
+		text-white hover:bg-primary"
+			>Volver al Dashboard</a
+		>
 	</div>
 	<Footer />
 </Layout>
