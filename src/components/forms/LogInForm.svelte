@@ -1,6 +1,6 @@
 <script>
 	import Input from "@/components/forms/Input.svelte"
-	import { onMount } from 'svelte';
+	import { onMount } from "svelte"
 
 	import { validateEmail, validatePassword } from "@/utils/form-validations.js"
 
