@@ -1,5 +1,6 @@
 ---
 import Logo from "@/icons/Logo.astro"
+import Translation from "@/icons/Translation.astro"
 
 const { userName } = Astro.props
 ---
@@ -24,7 +25,7 @@ const { userName } = Astro.props
 				aria-expanded="true"
 				onclick="_googleTranslateElementInit()"
 			>
-				<img src="icons/translation.svg" alt="Icono de traducción" />
+				<Translation />
 				Translate
 			</button>
 			<div class="absolute mt-2 hidden" id="google_translate_element"></div>
