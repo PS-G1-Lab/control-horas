@@ -19,7 +19,7 @@
 			formData.append("sessionToken", session.split("=")[1])
 			formData.append("userId", user.split("=")[1])
 
-			const res = await fetch("/api/checkSession", {
+			const res = await fetch("/api/checkLogged", {
 				method: "POST",
 				body: formData,
 			})
