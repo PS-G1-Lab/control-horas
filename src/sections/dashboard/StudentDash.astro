@@ -1,1 +1,59 @@
-student
+---
+import BorderTeacher from "@/components/BorderTeacher.astro"
+import InscribeForm from "@/components/forms/InscribeForm.svelte"
+
+const ERRORS = {
+	server: "",
+}
+
+const userId = Astro.cookies.get("user")
+
+const data = await fetch("https://control-horas-api.onrender.com/class/getallclasses", {
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify({
+		userId: userId.value,
+	}),
+})
+	.then((response) => response.json())
+	.catch((error) => error as Error)
+
+if (data.error) {
+	ERRORS.server = data.error
+}
+---
+
+<section class="my-20 flex flex-col items-center justify-center">
+	<div class="my-8">
+		<h2 class="mb-4 ml-5 text-base font-bold md:text-2xl lg:text-2xl">Clases ofertadas:</h2>
+		<hr class="mb-8 w-full border-b border-black" />
+		<div class="scroll-container overflow-y-scroll lg:block">
+			{
+				ERRORS.server && (
+					<div class="mb-4 rounded-lg bg-yellow-50 p-4 text-sm text-yellow-800" role="alert">
+						<span class="font-medium">{ERRORS.server}</span>
+					</div>
+				)
+			}
+			{
+				data.map((clase) => (
+					<>
+						<div class="flex items-center gap-4">
+							<BorderTeacher
+								title={clase.title}
+								fecha={clase.date}
+								ambito={clase.subject}
+								horaStart={clase.start_at}
+								horaFin={clase.end_time}
+								nAlumnos={clase.students}
+							/>
+							<InscribeForm client:idle classId={clase.class_id} />
+						</div>
+					</>
+				))
+			}
+		</div>
+	</div>
+</section>

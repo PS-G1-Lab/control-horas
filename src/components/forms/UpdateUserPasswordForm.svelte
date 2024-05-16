@@ -74,7 +74,7 @@
 	}
 </script>
 
-<form on:submit={(e) => updateUserPassword(e)}>
+<form class="flex flex-col items-center" on:submit={(e) => updateUserPassword(e)}>
 	<h2 class="mb-4 mr-32 text-2xl font-bold">Nueva Contraseña</h2>
 	<div class="mb-4">
 		{#if ERRORS.server}
@@ -122,9 +122,10 @@
 				<span class="font-medium">{ERRORS.confirmPassword}</span>
 			</div>
 		{/if}
+		<a href="/profile" class="mx-auto justify-center rounded-full bg-gray-200 my-10 px-4 py-2 text-lg font-bold text-gray-600 hover:bg-gray-300">Cancelar</a>
 		<input
 			type="submit"
-			value="Registrarse"
+			value="Cambiar contraseña"
 			class="mx-auto w-56 justify-center rounded-full bg-orange-500 my-10 px-4 py-2 text-lg font-bold text-white hover:bg-orange-600 cursor-pointer"
 		/>
 	</div>
