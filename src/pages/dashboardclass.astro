@@ -1,12 +1,55 @@
 ---
+import { validateResponse, validateResult } from "../utils/form-validations"
+
 import AlterHeader from "@/components/AlterHeader.astro"
 import Border from "@/components/Border.astro"
 import Button from "@/components/Button.astro"
 import Footer from "@/components/Footer.astro"
-
 import TextSidebar from "@/components/TextSidebar.astro"
-
 import Layout from "@/layouts/Layout.astro"
+
+const errors = {
+	userCookie: "",
+	role: "",
+	server: "",
+}
+
+async function handleUserSignUp(e) {
+	e.preventDefault()
+
+	const { role } = e.target.elements
+
+	const data = {
+		userCookie: Astro.cookies.get("user").value.trim(),
+		role: role.value.trim(),
+	}
+
+	if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+		const localRole = localStorage.getItem("role")
+		if (localRole !== data.role) {
+			console.log(
+				"¡Atención! 🛑 ¡Este sistema está protegido por una muralla impenetrable! Los hackers encontrarán solo puertas cerradas. 🚪🔒 #SeguridadTotal"
+			)
+			return
+		}
+	}
+
+	const formData = new FormData()
+	formData.append("userCookie", data.userCookie)
+
+	const res = await fetch("/api/resgiterInClass", {
+		method: "POST",
+		body: formData,
+	})
+
+	errors.server = await validateResponse(res)
+	if (errors.server) return
+
+	const result = await res.json()
+
+	errors.server = validateResult(result)
+	if (errors.server) return
+}
 ---
 
 <Layout
