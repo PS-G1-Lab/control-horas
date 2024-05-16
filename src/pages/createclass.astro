@@ -4,13 +4,43 @@ import Footer from "@/components/Footer.astro"
 import Wave from "@/components/Wave.astro"
 import CreateClassForm from "@/components/forms/CreateClassForm.svelte"
 import Layout from "@/layouts/Layout.astro"
+
+const session = Astro.cookies.get("session")
+const user = Astro.cookies.get("user")
+
+if (!session || !user) {
+	return Astro.redirect("/login")
+}
+
+const userData = {
+	userId: user.value,
+	sessionToken: session.value,
+}
+
+const data = await fetch("https://control-horas-api.onrender.com/user/checkSession", {
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json",
+	},
+	body: JSON.stringify(userData),
+})
+	.then((response) => response.json())
+	.catch((error) => error as Error)
+
+if (data.error) {
+	Astro.cookies.delete("session")
+	Astro.cookies.delete("user")
+	return Astro.redirect("/login")
+}
+
+const { user_name: userName, email, role, is_verified: isVerified } = data.userData
 ---
 
 <Layout
 	title="GestionAppmos - La aplicación de gestión horaria para clases particulares"
 	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
 >
-	<AlterHeader />
+	<AlterHeader userName={userName} />
 	<div
 		class="mx-auto flex h-full items-center justify-center lg:ml-[220px] lg:flex lg:items-center lg:justify-center"
 	>

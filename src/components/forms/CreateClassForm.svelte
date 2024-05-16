@@ -1,7 +1,13 @@
 <script>
-	import { validateDate, validateDescription, validateHour, validateSubject, validateTitle } from "@/utils/form-validations"
+	import {
+		validateDate,
+		validateDescription,
+		validateHour,
+		validateSubject,
+		validateTitle,
+	} from "@/utils/form-validations"
 	import { getCookies } from "@/utils/session-info"
-				
+
 	const errors = {
 		title: "",
 		subject: "",
@@ -10,7 +16,7 @@
 		date: "",
 		description: "",
 	}
-	
+
 	async function handleClassCreation(e) {
 		e.preventDefault()
 
@@ -26,21 +32,17 @@
 		}
 
 		errors.title = validateTitle(data.title)
-		if (errors.title) return
-
 		errors.subject = validateSubject(data.subject)
-		if (errors.subject) return
-
 		errors.startAt = validateHour(data.startAt)
-		if (errors.startAt) return
-
 		errors.end = validateHour(data.end)
-		if (errors.end) return
-
 		errors.date = validateDate(data.date)
-		if (errors.date) return
-
 		errors.description = validateDescription(data.description)
+
+		if (errors.title) return
+		if (errors.subject) return
+		if (errors.startAt) return
+		if (errors.end) return
+		if (errors.date) return
 		if (errors.description) return
 
 		const cookies = getCookies()
@@ -71,7 +73,7 @@
 			return
 		}
 
-		window.location.href = "/dashboardteacher"
+		window.location.href = "/dashboard"
 	}
 </script>
 
