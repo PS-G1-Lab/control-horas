@@ -1,6 +1,6 @@
 <script>
 	import Input from "@/components/forms/Input.svelte"
-	import { validateEmail, validatePassword, validateResponse, validateResult } from "../../utils/form-validations"
+	import { validateEmail, validatePassword } from "../../utils/form-validations"
 
 	const errors = {
 		email: "",
@@ -43,9 +43,17 @@
 
 		// Create a session cokie to permit access to the dashboard
 		document.cookie = `session=${result.sessionToken}; path=/; max-age=3600; samesite=strict; secure`
-    document.cookie = `user=${result.userId}; path=/; max-age=3600; samesite=strict; secure`
+		document.cookie = `user=${result.userId}; path=/; max-age=3600; samesite=strict; secure`
 
 		window.location.href = "/dashboard"
+	}
+
+	function showPassword() {
+		if (password.type === "password") {
+			password.type = "text"
+		} else {
+			password.type = "password"
+		}
 	}
 </script>
 
@@ -70,6 +78,18 @@
 		{/if}
 		<div class="relative">
 			<Input type="password" id="password" content="Contraseña:" placeholder=" " required="true" />
+			<button
+				type="button"
+				class="absolute right-2 top-2 w-6 h-6 cursor-pointer"
+				id="showPassword"
+				on:click={showPassword}
+			>
+				<img
+					src="/icons/eye.svg"
+					alt="Icono de un ojo"
+					class="absolute right-2 top-2 w-6 h-6 cursor-pointer"
+				/>
+			</button>
 		</div>
 		{#if errors.password}
 			<div class="p-4 mb-4 w-80 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
