@@ -62,17 +62,13 @@ import Layout from "@/layouts/Layout.astro"
 </Layout>
 
 <script>
+	import { getCookies } from "@/utils/session-info"
+
 	const logoutButton = document.getElementById("logout_button")
 	logoutButton.addEventListener("click", async (event) => {
 		event.preventDefault()
 
-		const cookies: { [key: string]: string } = document.cookie
-			.split("; ")
-			.reduce((prev, current) => {
-				const [name, value] = current.split("=")
-				prev[name] = value
-				return prev
-			}, {})
+		const cookies = getCookies()
 
 		const formData = new FormData()
 		formData.append("userId", cookies.user)
@@ -83,6 +79,8 @@ import Layout from "@/layouts/Layout.astro"
 			body: formData,
 		})
 		if (response.ok) {
+			document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+			document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
 			window.location.href = "/logout"
 		} else {
 			console.error("Error al cerrar la sesión")

@@ -1,5 +1,6 @@
 <script>
 	import { validateDate, validateDescription, validateHour, validateSubject, validateTitle } from "@/utils/form-validations"
+	import { getCookies } from "@/utils/session-info"
 				
 	const errors = {
 		title: "",
@@ -42,11 +43,7 @@
 		errors.description = validateDescription(data.description)
 		if (errors.description) return
 
-		const cookies = document.cookie.split("; ").reduce((prev, current) => {
-			const [name, value] = current.split("=")
-			prev[name] = value
-			return prev
-		}, {})
+		const cookies = getCookies()
 
 		const formData = new FormData()
 		formData.append("userId", cookies.user)
