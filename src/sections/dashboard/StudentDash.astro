@@ -49,7 +49,7 @@ if (data.error) {
 								horaFin={clase.end_time}
 								nAlumnos={clase.students}
 							/>
-							<InscribeForm client:idle classId={clase.class_id} />
+							<InscribeForm client:idle classId={clase.class_id} userId={userId.value} />
 						</div>
 					</>
 				))

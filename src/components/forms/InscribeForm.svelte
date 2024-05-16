@@ -1,8 +1,9 @@
 <script>
 	import { getCookies } from "@/utils/session-info.js"
 
-	export let { classId } = {
+	export let { classId, userId } = {
 		classId: "",
+		userId: "",
 	}
 
 	async function handleInscription(e) {
@@ -44,7 +45,7 @@
 
 <form on:submit={(e) => handleInscription(e)}>
 	<input type="hidden" name="classId" value={classId} />
-	<input type="hidden" name="studentId" value={localStorage.getItem("studentId")} />
+	<input type="hidden" name="userId" value={userId} />
 	<input
 		type="submit"
 		value="Inscribirse"
