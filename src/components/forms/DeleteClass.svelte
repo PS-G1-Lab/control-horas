@@ -47,7 +47,9 @@
 </script>
 
 {#if ERRORS.server}
-	<p class="text-red-500 text-center">{ERRORS.server}</p>
+	<div class="mb-4 rounded-lg bg-yellow-50 p-4 text-sm text-yellow-800" role="alert">
+		<span class="font-medium">{ERRORS.server}</span>
+	</div>
 {/if}
 <form on:submit={(e) => handleDelete(e)}>
 	<input type="hidden" name="classId" value={classId} />
