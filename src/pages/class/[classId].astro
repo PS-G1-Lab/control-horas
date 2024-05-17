@@ -1,7 +1,9 @@
 ---
+import Layout from "@/layouts/Layout.astro"
+
 import AlterHeader from "@/components/AlterHeader.astro"
 import Footer from "@/components/Footer.astro"
-import Layout from "@/layouts/Layout.astro"
+import DeleteClass from "@/components/forms/DeleteClass.svelte"
 
 const session = Astro.cookies.get("session")
 const user = Astro.cookies.get("user")
@@ -65,77 +67,36 @@ if (classData.error) {
 			</h2>
 			<hr class="mb-8 w-full border-b border-black" />
 			<div class="mx-auto max-w-[1100px]">
-				<!-- deben aparecer los datos de la bd -->
-				<form class="flex flex-col gap-4 space-y-4 border border-black p-4">
-					<div>
-						<label for="dias" class="block text-lg font-medium text-gray-700"
-							>Fecha: <span class="text-black">{classData.date}</span></label
-						>
-					</div>
-					<div>
-						<label for="ambito" class="block text-lg font-medium text-gray-700"
-							>Asignatura: <span class="text-black">{classData.subject}</span></label
-						>
-					</div>
-					<div>
-						<label for="horaStart" class="block text-lg font-medium text-gray-700"
-							>Hora de inicio: <span class="text-black">{classData.start_at}</span></label
-						>
-					</div>
-					<div>
-						<label for="horaFin" class="block text-lg font-medium text-gray-700"
-							>Hora de finalización: <span class="text-black">{classData.end_time}</span></label
-						>
-					</div>
-					<div>
-						<label for="descripcion" class="block text-lg font-medium text-gray-700"
-							>Descripción: <span class="text-black">{classData.description}</span></label
-						>
-					</div>
-				</form>
+				<p class="block text-lg font-medium text-gray-700">
+					Fecha: <span class="text-black">{classData.date}</span>
+				</p>
+				<p class="block text-lg font-medium text-gray-700">
+					Asignatura: <span class="text-black">{classData.subject}</span>
+				</p>
+				<p class="block text-lg font-medium text-gray-700">
+					Hora de inicio: <span class="text-black">{classData.start_at}</span>
+				</p>
+				<p class="block text-lg font-medium text-gray-700">
+					Hora de finalización: <span class="text-black">{classData.end_time}</span>
+				</p>
+				<p class="block text-lg font-medium text-gray-700">
+					Descripción: <span class="text-black">{classData.description}</span>
+				</p>
 			</div>
 		</div>
-		<div class="flex justify-end">
-			<button
-				id="delete_button"
-				class="mx-auto w-56 justify-center rounded-full bg-orange-500 py-2 text-lg font-bold text-white hover:bg-primary"
-				>Eliminar clase</button
-			>
-			<a
-				href="/dashboard"
-				class="mx-auto flex w-56 justify-center rounded-full bg-orange-500 py-2 text-lg font-bold text-white hover:bg-primary"
-				>Volver al dashboard</a
-			>
-		</div>
 	</section>
-	<Footer />
+	<div class="flex justify-end">
+		<DeleteClass
+			client:idle
+			classId={classId}
+			userId={userData.userId}
+			sessionToken={userData.sessionToken}
+		/>
+		<a
+			href="/dashboard"
+			class="mx-auto flex w-56 justify-center rounded-full bg-orange-500 py-2 text-lg font-bold text-white hover:bg-primary"
+			>Volver al dashboard</a
+		>
+	</div>
 </Layout>
-
-<script>
-	import { getCookies } from "@/utils/session-info"
-
-	const logoutButton = document.getElementById("delete_button")
-	logoutButton.addEventListener("click", async (event) => {
-		event.preventDefault()
-
-		const cookies = getCookies()
-
-		const classIdElement = document.getElementById("classId")
-		const classId = classIdElement.dataset.classId
-
-		const formData = new FormData()
-		formData.append("classId", classId)
-		formData.append("userId", cookies.user)
-		formData.append("sessionToken", cookies.session)
-
-		const response = await fetch("/api/deleteclass", {
-			method: "POST",
-			body: formData,
-		})
-		if (response.ok) {
-			window.location.href = "/dashboard"
-		} else {
-			console.error("Error al eliminar la clase.")
-		}
-	})
-</script>
+<Footer />

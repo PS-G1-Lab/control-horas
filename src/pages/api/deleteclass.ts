@@ -7,7 +7,6 @@ export const POST: APIRoute = async ({ request }) => {
 		classData[key] = value
 	}
 
-	// const response = await fetch("http://localhost:1234/class/delete", {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const response = await fetch("https://control-horas-api.onrender.com/class/delete", {
 		method: "POST",
