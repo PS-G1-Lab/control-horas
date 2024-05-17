@@ -60,7 +60,7 @@ if (classData.error) {
 	description="La nueva aplicación que va a revolucionar la forma de gestionarte los horarios para las clases particulares. Busca profesores, o date a conocer a nivel mundial."
 >
 	<AlterHeader userName={userName} />
-	<section class="relative mx-auto my-8 mt-3 w-full max-w-screen-xl p-4">
+	<section class="relative mx-auto my-12 w-full max-w-screen-xl p-4">
 		<div id="classId" class="my-8" data-class-id={classId}>
 			<h2 class="mb-4 ml-5 text-base font-bold md:text-2xl lg:text-2xl">
 				{classData.title}
@@ -84,19 +84,23 @@ if (classData.error) {
 				</p>
 			</div>
 		</div>
+		<div class="mx-auto mt-12 flex max-w-screen-lg justify-between">
+			{
+				role === 1 && (
+					<DeleteClass
+						client:idle
+						classId={classId}
+						userId={userData.userId}
+						sessionToken={userData.sessionToken}
+					/>
+				)
+			}
+			<a
+				href="/dashboard"
+				class="mx-auto flex w-56 justify-center rounded-full bg-orange-500 py-2 text-lg font-bold text-white hover:bg-primary"
+				>Volver al dashboard</a
+			>
+		</div>
 	</section>
-	<div class="flex justify-end">
-		<DeleteClass
-			client:idle
-			classId={classId}
-			userId={userData.userId}
-			sessionToken={userData.sessionToken}
-		/>
-		<a
-			href="/dashboard"
-			class="mx-auto flex w-56 justify-center rounded-full bg-orange-500 py-2 text-lg font-bold text-white hover:bg-primary"
-			>Volver al dashboard</a
-		>
-	</div>
 </Layout>
 <Footer />

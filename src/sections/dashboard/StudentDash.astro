@@ -40,15 +40,17 @@ if (data.error) {
 			{
 				data.map((clase) => (
 					<>
-						<div class="flex items-center gap-4">
-							<BorderTeacher
-								title={clase.title}
-								fecha={clase.date}
-								ambito={clase.subject}
-								horaStart={clase.start_at}
-								horaFin={clase.end_time}
-								nAlumnos={clase.students}
-							/>
+						<div class="flex items-center gap-8 px-8">
+							<a class="transition-transform hover:scale-105" href={`/class/${clase.class_id}`}>
+								<BorderTeacher
+									title={clase.title}
+									fecha={clase.date}
+									ambito={clase.subject}
+									horaStart={clase.start_at}
+									horaFin={clase.end_time}
+									nAlumnos={clase.students}
+								/>
+							</a>
 							<InscribeForm client:idle classId={clase.class_id} userId={userId.value} />
 						</div>
 					</>

@@ -42,7 +42,7 @@ if (data.error) {
 	<div class="my-8">
 		<h2 class="mb-4 ml-5 text-base font-bold md:text-2xl lg:text-2xl">Clases creadas:</h2>
 		<hr class="mb-8 w-full border-b border-black" />
-		<div class="scroll-container overflow-y-scroll lg:block">
+		<div class="scroll-container overflow-y-scroll px-8 lg:block">
 			{
 				ERRORS.server && (
 					<div class="mb-4 rounded-lg bg-yellow-50 p-4 text-sm text-yellow-800" role="alert">
@@ -52,16 +52,18 @@ if (data.error) {
 			}
 			{
 				data.map((clase) => (
-					<a href={`/class/${clase.class_id}`}>
-						<BorderTeacher
-							title={clase.title}
-							fecha={clase.date}
-							ambito={clase.subject}
-							horaStart={clase.start_at}
-							horaFin={clase.end_time}
-							nAlumnos={clase.students}
-						/>
-					</a>
+					<div class="flex items-center gap-8 px-8">
+						<a class="transition-transform hover:scale-105" href={`/class/${clase.class_id}`}>
+							<BorderTeacher
+								title={clase.title}
+								fecha={clase.date}
+								ambito={clase.subject}
+								horaStart={clase.start_at}
+								horaFin={clase.end_time}
+								nAlumnos={clase.students}
+							/>
+						</a>
+					</div>
 				))
 			}
 		</div>

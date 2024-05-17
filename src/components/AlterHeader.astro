@@ -30,7 +30,10 @@ const { userName } = Astro.props
 			</button>
 			<div class="absolute mt-2 hidden" id="google_translate_element"></div>
 		</div>
-		<a href="/profile" class="flex h-min items-center justify-end">
+		<a
+			href="/profile"
+			class="flex h-min items-center justify-end rounded px-3 py-2 transition ease-in-out hover:bg-neutral-100"
+		>
 			<span class="font-semibold tracking-tight">{userName}</span>
 		</a>
 	</div>

@@ -11,6 +11,7 @@
 
 	async function handleDelete(e) {
 		e.preventDefault()
+		if (!window.confirm("¿Estás seguro de que quieres eliminar esta clase?")) return
 
 		const { classId, userId, sessionToken } = e.target.elements
 
